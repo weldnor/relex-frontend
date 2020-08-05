@@ -1,5 +1,7 @@
 import {Component, OnInit, Output} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {ExistingUserModel} from './features/users/models/users.model';
+import {UsersService} from './features/users/services/users.service';
 
 @Component({
   selector: 'app-root',
@@ -7,24 +9,18 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent implements OnInit {
+  users?: ExistingUserModel[] = undefined;
 
-  @Output()
-  response?: any = undefined;
-
-  constructor(private readonly http: HttpClient) {
+  constructor(private readonly userService: UsersService) {
   }
 
   ngOnInit(): void {
-    this.http
-      .get<any>(
-        `https://httpbin.org/get`
-      )
-      .subscribe(
-        (result) => {
-          console.log(result);
-          this.response = result;
-        },
-        (error) => (console.log(`oops ${error}`))
-      );
+    this.refresh();
+  }
+
+  private refresh(): void {
+    this.userService.getAllUsers().subscribe(
+      value => this.users = value
+    );
   }
 }
