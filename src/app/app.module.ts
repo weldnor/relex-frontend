@@ -6,17 +6,25 @@ import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {HttpClientModule} from '@angular/common/http';
+import { AboutPage } from './routed/pages/about-page/about.page';
+import {MatButtonModule} from '@angular/material/button';
+import { NotFoundPage } from './routed/pages/not-found-page/not-found-.page';
+import { HomePage } from './routed/pages/home-page/home.page';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AboutPage,
+    NotFoundPage,
+    HomePage
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 <mat-toolbar color="primary">
-  <span>Budget Advisor</span>
+  <a routerLink="/" mat-button>Budget Advisor</a>
+  <a routerLink="/about" mat-button>About</a>
 </mat-toolbar>
 
-<div style="white-space:pre-wrap">{{users | json}}</div>
+<router-outlet></router-outlet>
