@@ -10,6 +10,7 @@ import { AboutPage } from './routed/pages/about-page/about.page';
 import {MatButtonModule} from '@angular/material/button';
 import { NotFoundPage } from './routed/pages/not-found-page/not-found-.page';
 import { HomePage } from './routed/pages/home-page/home.page';
+import {CurrentUserModule} from './features/current-user/current-user.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HomePage } from './routed/pages/home-page/home.page';
     BrowserAnimationsModule,
     MatToolbarModule,
     HttpClientModule,
-    MatButtonModule
+    MatButtonModule,
+    CurrentUserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
