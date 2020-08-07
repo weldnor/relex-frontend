@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Anonymous, CurrentUser, LoggedUser} from './current-user.model';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Role} from './role.model';
 
@@ -66,6 +66,11 @@ export class CurrentUserService {
   //       })
   //     ) as Observable<void>;
   // }
+  login(username: string, password: string): Observable<void> {
+    return Observable.create(observer => {
+      observer.next();
+    });
+  }
 }
 
 
