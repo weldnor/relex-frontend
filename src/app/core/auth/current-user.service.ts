@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {APP_INITIALIZER, Injectable, Provider} from '@angular/core';
 import {Anonymous, CurrentUser, LoggedUser} from './current-user.model';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
@@ -86,6 +86,7 @@ export class CurrentUserService {
     return new Observable<ExistingUserModel | undefined>(
       subscriber => {
         subscriber.next(profile);
+        subscriber.complete();
       }
     ).pipe(tap((p) => {
       if (p == undefined) {
@@ -118,7 +119,7 @@ export class CurrentUserService {
     //     )
     //     .pipe(switchMap(() => this.refreshCurrentUser()));
 
-    return Observable.create(observer => {
+    return new Observable(observer => {
       observer.next();
     }).pipe(switchMap(() => this.refreshCurrentUser()));
   }
@@ -140,3 +141,19 @@ export class CurrentUserService {
   }
 }
 
+export function currentUserInitializerFactory(
+  currentUserService: CurrentUserService
+): () => Promise<void> {
+  return () => {
+    return currentUserService
+      .refreshCurrentUser()
+      .toPromise();
+  };
+}
+
+export const CURRENT_USER_INITIALIZER: Provider = {
+  provide: APP_INITIALIZER,
+  useFactory: currentUserInitializerFactory,
+  deps: [CurrentUserService],
+  multi: true
+};

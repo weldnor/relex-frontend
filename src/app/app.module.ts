@@ -11,6 +11,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { NotFoundPage } from './routed/pages/not-found-page/not-found-.page';
 import { HomePage } from './routed/pages/home-page/home.page';
 import {CurrentUserModule} from './features/current-user/current-user.module';
+import {CoreModule} from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {CurrentUserModule} from './features/current-user/current-user.module';
     MatToolbarModule,
     HttpClientModule,
     MatButtonModule,
-    CurrentUserModule
+    CurrentUserModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
