@@ -18,6 +18,10 @@ export class UserMenuComponent implements OnInit {
   }
 
   handleLogoutClick(): void {
-    console.log('logout...');
+    this.currentUserService.logout().subscribe(
+      () => {
+      },
+      (error) => console.error(error)
+    );
   }
 }

@@ -5,7 +5,7 @@ export interface ExistingUserModel {
     isActive: boolean;
     isLocked: boolean;
   };
-  createdAt: number;
+  createdAt: string;
   createdBy?: number;
 }
 

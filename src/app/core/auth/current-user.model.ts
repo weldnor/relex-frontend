@@ -1,8 +1,8 @@
 import {Role} from './role.model';
+import {ExistingUserModel} from '../../features/users/models/users.model';
 
-export interface LoggedUser {
+export interface LoggedUser extends ExistingUserModel {
   readonly authenticated: true;
-  readonly username: string;
 
   hasRole(role: Role): boolean;
 }
