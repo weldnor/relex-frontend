@@ -2,14 +2,13 @@ import {APP_INITIALIZER, Injectable, Provider} from '@angular/core';
 import {Anonymous, CurrentUser, LoggedUser} from './current-user.model';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
-import {Role} from './role.model';
 import {switchMap, tap} from 'rxjs/operators';
 import {ExistingUserModel} from '../../features/users/models/users.model';
 
 export class AnonymousUserImpl implements Anonymous {
   readonly authenticated: false = false;
 
-  hasRole(role: Role): boolean {
+  hasRole(role: string): boolean {
     return false;
   }
 }
@@ -21,9 +20,16 @@ export class CurrentUserImpl implements LoggedUser {
   id: number;
   username: string;
   userstatus: { isActive: boolean; isLocked: boolean };
+  personalInfo: {
+    firstName: string,
+    lastName: string,
+    phone: string,
+    email: string,
+  };
+  role: string;
 
-  hasRole(role: Role): boolean {
-    return true; // FIXME
+  hasRole(role: string): boolean {
+    return role === this.role; // FIXME
   }
 
   constructor(user: ExistingUserModel) {
@@ -33,6 +39,8 @@ export class CurrentUserImpl implements LoggedUser {
     this.id = user.id;
     this.username = user.username;
     this.userstatus = user.userstatus;
+    this.role = user.role;
+    this.personalInfo = user.personalInfo;
   }
 
 
@@ -62,12 +70,19 @@ export class CurrentUserService {
 
     // example profile
     const profile: ExistingUserModel = {
+      id: 1,
+      username: 'John1',
+      role: 'ADMIN',
+      personalInfo: {
+        firstName: 'string',
+        lastName: 'string',
+        phone: '343451',
+        email: 's64n1g@mail',
+      },
       createdAt: '2020-08-03 18:26:03.886058',
-      createdBy: 1,
-      id: 2,
-      username: 'example',
       userstatus: {isActive: true, isLocked: false}
     };
+
 
     // return this.http
     //   .get<ApiProfile | undefined>(
