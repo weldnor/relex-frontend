@@ -8,7 +8,7 @@ import {PermissionDirective} from './auth/permission.directive';
 @NgModule({
   imports: [CommonModule, HttpClientModule],
   exports: [HttpClientModule, PermissionDirective],
-  providers: [, CURRENT_USER_INITIALIZER],
+  providers: [CURRENT_USER_INITIALIZER],
   declarations: [PermissionDirective]
 })
 export class CoreModule {

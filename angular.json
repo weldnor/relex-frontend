@@ -126,5 +126,8 @@
       }
     }
   },
-  "defaultProject": "budgetadvisor"
+  "defaultProject": "budgetadvisor",
+  "cli": {
+    "analytics": false
+  }
 }

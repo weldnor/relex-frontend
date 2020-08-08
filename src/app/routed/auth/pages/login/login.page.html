@@ -1,18 +1,23 @@
-<mat-card>
-  <mat-card-title>Login</mat-card-title>
+<mat-card class="loginCard">
+  <mat-card-title class="loginLabel">Log in</mat-card-title>
 
   <form
     #form="ngForm"
     (ngSubmit)="handleFormSubmit(form.value)"
   >
     <mat-error *ngIf="error">
-      Auth error!
+      Incorrect username or password
     </mat-error>
 
     <mat-card-content class="content">
       <mat-form-field appearance="fill">
         <mat-label>Username</mat-label>
-        <input matInput ngModel name="username" required/>
+        <input
+          matInput
+          ngModel
+          name="username"
+          required
+        />
       </mat-form-field>
 
       <mat-form-field appearance="fill">
