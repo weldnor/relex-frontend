@@ -122,13 +122,18 @@ export class CurrentUserService {
   }
 
   logout(): Observable<void> {
+    console.log(`${environment.api}/logout`);
     return this.http
       .post<void>(
-        `${environment.api}/auth/logout`,
+        `${environment.api}/logout`,
         undefined
       )
       .pipe(
-        tap(() => this.user$.next(new AnonymousUserImpl()))
+        tap(x => {
+          this.user$.next(new AnonymousUserImpl());
+        }, e => {
+          this.user$.next(new AnonymousUserImpl()); // FIXME
+        })
       );
   }
 }
