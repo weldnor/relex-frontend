@@ -82,8 +82,6 @@ export class CurrentUserService {
     //   createdAt: '2020-08-03 18:26:03.886058',
     //   userstatus: {isActive: true, isLocked: false}
     // };
-
-
     return this.http
       .get<ExistingUserModel | undefined>(
         `${environment.api}/public/getCurrentUser`
