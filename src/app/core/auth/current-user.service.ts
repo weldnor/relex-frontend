@@ -1,9 +1,10 @@
 import {APP_INITIALIZER, Injectable, Provider} from '@angular/core';
 import {Anonymous, CurrentUser, LoggedUser} from './current-user.model';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject, Observable, of} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
-import {switchMap, tap} from 'rxjs/operators';
+import {catchError, switchMap, tap} from 'rxjs/operators';
 import {ExistingUserModel} from '../../features/users/models/users.model';
+import {environment} from '../../../environments/environment';
 
 export class AnonymousUserImpl implements Anonymous {
   readonly authenticated: false = false;
@@ -63,96 +64,72 @@ export class CurrentUserService {
   );
 
   constructor(private http: HttpClient) {
-    console.log('Current User created');
   }
 
   refreshCurrentUser(): Observable<void> {
 
     // example profile
-    const profile: ExistingUserModel = {
-      id: 1,
-      username: 'John1',
-      role: 'ADMIN',
-      personalInfo: {
-        firstName: 'string',
-        lastName: 'string',
-        phone: '343451',
-        email: 's64n1g@mail',
-      },
-      createdAt: '2020-08-03 18:26:03.886058',
-      userstatus: {isActive: true, isLocked: false}
-    };
+    // const profile: ExistingUserModel = {
+    //   id: 1,
+    //   username: 'John1',
+    //   role: 'ADMIN',
+    //   personalInfo: {
+    //     firstName: 'string',
+    //     lastName: 'string',
+    //     phone: '343451',
+    //     email: 's64n1g@mail',
+    //   },
+    //   createdAt: '2020-08-03 18:26:03.886058',
+    //   userstatus: {isActive: true, isLocked: false}
+    // };
 
 
-    // return this.http
-    //   .get<ApiProfile | undefined>(
-    //     `${environment.api}/api/public/profile`
-    //   )
-    //   .pipe(
-    //     tap((profile) => {
-    //       if (profile == undefined) {
-    //         this.user$.next(new AnonymousUserImpl());
-    //       } else {
-    //         this.user$.next(new CurrentUserImpl(profile));
-    //       }
-    //     })
-    //   ) as Observable<void>;
-
-    return new Observable<ExistingUserModel | undefined>(
-      subscriber => {
-        subscriber.next(profile);
-        subscriber.complete();
-      }
-    ).pipe(tap((p) => {
-      if (p == undefined) {
-        this.user$.next(new AnonymousUserImpl());
-      } else {
-        this.user$.next(new CurrentUserImpl(profile));
-      }
-    })) as unknown as Observable<void>;
+    return this.http
+      .get<ExistingUserModel | undefined>(
+        `${environment.api}/public/getCurrentUser`
+      )
+      .pipe(
+        catchError(err => {
+          return of(undefined);
+        }),
+        tap((profile) => {
+          console.log(profile);
+          if (profile == undefined) {
+            this.user$.next(new AnonymousUserImpl());
+          } else {
+            this.user$.next(new CurrentUserImpl(profile as ExistingUserModel)); // FIXME?
+          }
+        }, err => {
+          console.log(err);
+          this.user$.next(new AnonymousUserImpl());
+        })
+      ) as Observable<void>;
   }
 
   login(username: string, password: string): Observable<void> {
-    //   const form = new HttpParams({
-    //     fromObject: {
-    //       username,
-    //       password
-    //     }
-    //   });
-    //
-    //   const headers = new HttpHeaders({
-    //     'Content-Type': 'application/x-www-form-urlencoded'
-    //   });
-    //
-    //   return this.http
-    //     .post<void>(
-    //       `${environment.api}/auth/login`,
-    //       form.toString(),
-    //       {
-    //         headers
-    //       }
-    //     )
-    //     .pipe(switchMap(() => this.refreshCurrentUser()));
 
-    return new Observable(observer => {
-      observer.next();
-    }).pipe(switchMap(() => this.refreshCurrentUser()));
+    const data = {
+      username,
+      password
+    };
+
+    return this.http
+      .post<void>(
+        `${environment.api}/auth/login`,
+        data
+      )
+      .pipe(switchMap(() => this.refreshCurrentUser()));
   }
 
   logout(): Observable<void> {
-    //   return this.http
-    //     .post<void>(
-    //       `${environment.api}/auth/logout`,
-    //       undefined
-    //     )
-    //     .pipe(
-    //       tap(() => this.user$.next(new AnonymousUserImpl()))
-    //     );
-    return Observable.create(observer => {
-      observer.next();
-    }).pipe(
-      tap(() => this.user$.next(new AnonymousUserImpl()))
-    );
+    return this.http
+      .post<void>(
+        `${environment.api}/auth/logout`,
+        undefined
+      )
+      .pipe(
+        tap(() => this.user$.next(new AnonymousUserImpl()))
+      );
   }
 }
 
