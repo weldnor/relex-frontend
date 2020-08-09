@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../../../features/users/services/users.service';
-import {ExistingUser} from '../../../features/users/models/users.model';
+import {UserService} from '../../../../features/users/services/users.service';
+import {ExistingUser} from '../../../../features/users/models/users.model';
 
 @Component({
   selector: 'app-home-page',

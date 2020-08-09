@@ -6,6 +6,10 @@
     <a routerLink="/groups" mat-button>groups</a>
   </ng-container>
 
+  <ng-container *ngIf="user?.role === 'ADMIN'">
+    <a routerLink="/admin" mat-button>admin</a>
+  </ng-container>
+
   <a routerLink="/about" mat-button>About</a>
 
   <div class="space"></div>
