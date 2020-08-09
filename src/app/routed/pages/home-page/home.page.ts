@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {UsersService} from '../../../features/users/services/users.service';
-import {ExistingUserModel} from '../../../features/users/models/users.model';
+import {UserService} from '../../../features/users/services/users.service';
+import {ExistingUser} from '../../../features/users/models/users.model';
 
 @Component({
   selector: 'app-home-page',
@@ -9,10 +9,10 @@ import {ExistingUserModel} from '../../../features/users/models/users.model';
 })
 export class HomePage implements OnInit {
 
-  users?: ExistingUserModel[] = undefined;
+  users?: ExistingUser[] = undefined;
   error?: string = undefined;
 
-  constructor(private readonly usersService: UsersService) {
+  constructor(private readonly usersService: UserService) {
   }
 
   ngOnInit(): void {

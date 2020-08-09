@@ -1,4 +1,6 @@
-export interface ExistingUserModel {
+import {UserRole} from './user-role.model';
+
+export interface ExistingUser {
   id: number;
   username: string;
   userstatus: {
@@ -11,7 +13,7 @@ export interface ExistingUserModel {
     phone: string;
     email: string;
   };
-  role: string;
+  role: UserRole;
   createdAt: string;
   createdBy?: number;
 }

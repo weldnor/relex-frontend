@@ -2,7 +2,7 @@ import {APP_INITIALIZER, Injectable, Provider} from '@angular/core';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {catchError, switchMap, tap} from 'rxjs/operators';
-import {ExistingUserModel} from '../../features/users/models/users.model';
+import {ExistingUser} from '../../features/users/models/users.model';
 import {environment} from '../../../environments/environment';
 
 
@@ -11,7 +11,7 @@ import {environment} from '../../../environments/environment';
 })
 export class CurrentUserService {
   // поток пользователей. undefined - пользователь не залогинен.
-  readonly user$ = new BehaviorSubject<ExistingUserModel | undefined>(
+  readonly user$ = new BehaviorSubject<ExistingUser | undefined>(
     undefined
   );
 
@@ -20,7 +20,7 @@ export class CurrentUserService {
 
   refreshCurrentUser(): Observable<void> {
     return this.http
-      .get<ExistingUserModel | undefined>(
+      .get<ExistingUser | undefined>(
         `${environment.api}/public/getCurrentUser`
       )
       .pipe(

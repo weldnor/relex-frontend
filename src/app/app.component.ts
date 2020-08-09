@@ -1,7 +1,6 @@
-import {Component, OnInit, Output} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {ExistingUserModel} from './features/users/models/users.model';
-import {UsersService} from './features/users/services/users.service';
+import {Component, OnInit} from '@angular/core';
+import {ExistingUser} from './features/users/models/users.model';
+import {CurrentUserService} from './core/auth/current-user.service';
 
 @Component({
   selector: 'app-root',
@@ -9,18 +8,15 @@ import {UsersService} from './features/users/services/users.service';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent implements OnInit {
-  users?: ExistingUserModel[] = undefined;
 
-  constructor(private readonly userService: UsersService) {
+  user: ExistingUser;
+
+  constructor(private readonly currentUserService: CurrentUserService) {
   }
 
   ngOnInit(): void {
-    this.refresh();
-  }
-
-  private refresh(): void {
-    this.userService.getAllUsers().subscribe(
-      value => this.users = value
-    );
+    this.currentUserService.user$.subscribe(user => {
+      this.user = user;
+    });
   }
 }
