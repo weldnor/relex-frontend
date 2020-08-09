@@ -21,15 +21,12 @@ export class PermissionDirective
   }
 
   ngOnInit(): void {
-    console.log('hiiiiiiiiii');
     this.sub = combineLatest([
       this.roles$,
       this.currentUserService.user$
     ]).subscribe(([roles, user]) => {
-      console.log(roles, user);
-      const mustShow = roles.some((role) =>
-        user.hasRole(role)
-      );
+
+      const mustShow = user != undefined && roles.some((role) => role === user.role);
 
       if (mustShow) {
         if (this.view == undefined) {
