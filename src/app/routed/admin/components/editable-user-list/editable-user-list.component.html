@@ -1,0 +1,10 @@
+<mat-list>
+  <ng-container *ngIf="users != undefined">
+
+    <mat-list-item *ngFor="let user of users" class="item">
+      <div>{{user.username}}</div>
+      <button (click)="handleDeleteUser(user)">delete</button>
+    </mat-list-item>
+
+  </ng-container>
+</mat-list>

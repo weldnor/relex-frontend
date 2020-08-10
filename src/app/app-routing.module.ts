@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {AboutPage} from './routed/pages/about-page/about.page';
-import {NotFoundPage} from './routed/pages/not-found-page/not-found-.page';
-import {HomePage} from './routed/pages/home-page/home.page';
+import {AboutPage} from './routed/shared/pages/about-page/about.page';
+import {NotFoundPage} from './routed/shared/pages/not-found-page/not-found-.page';
+import {HomePage} from './routed/shared/pages/home-page/home.page';
 
 const routes: Routes = [
   {
@@ -12,6 +12,10 @@ const routes: Routes = [
   {
     path: 'about',
     component: AboutPage
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./routed/admin/admin.module').then(m => m.AdminModule)
   },
   {
     path: 'auth',

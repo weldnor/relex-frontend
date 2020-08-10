@@ -14,4 +14,8 @@ export class GroupService {
   getAllGroups(): Observable<ExistingGroup[]> {
     return this.http.get<ExistingGroup[]>(`${environment.api}/groups/`);
   }
+
+  deleteGroupById(id: number): Observable<void> {
+    return this.http.delete<void>(`${environment.api}/groups/${id}`);
+  }
 }
