@@ -16,9 +16,9 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.usersService.getAllUsers().subscribe(
+ /*   this.usersService.getAllUsers().subscribe(
       value => this.users = value
-    );
+    ); */
   }
 
 }

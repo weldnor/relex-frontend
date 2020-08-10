@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <a routerLink="/" mat-button>Budget Advisor</a>
+  <a routerLink="/" class="logo" mat-button>Budget Advisor</a>
 
   <!--  FIXME тут *appPermission не работает -->
   <ng-container *ngIf="user != undefined">
@@ -12,8 +12,8 @@
 
   <a routerLink="/about" mat-button>About</a>
 
-  <div class="space"></div>
   <app-user-menu></app-user-menu>
+
 </mat-toolbar>
 
 <router-outlet></router-outlet>

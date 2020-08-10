@@ -14,7 +14,7 @@ export class UsersPage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.refreshList();
+  //  this.refreshList();
   }
 
   refreshList(): void {

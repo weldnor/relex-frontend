@@ -1,25 +1,34 @@
-<ng-container
-  *ngIf="user$ | async as user; else anonymousMenu"
->
-  <span>{{ user.username }}</span>
-  <button mat-icon-button [mat-menu-trigger-for]="menu">
-    <mat-icon>more_vert</mat-icon>
-  </button>
-
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="handleLogoutClick()">
-      Log out
-    </button>
-  </mat-menu>
-</ng-container>
-
-<ng-template #anonymousMenu>
-  <a
-    mat-flat-button
-    color="accent"
-    routerLink="/auth/login"
+<div class="authButtons">
+  <ng-container
+    *ngIf="user$ | async as user; else anonymousMenu"
   >
-    Log In
-  </a>
-</ng-template>
+    <span>{{ user.username }}</span>
+    <button mat-icon-button [mat-menu-trigger-for]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
 
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="handleLogoutClick()">
+        Log out
+      </button>
+    </mat-menu>
+  </ng-container>
+
+  <ng-template #anonymousMenu>
+    <a
+      mat-flat-button
+      color="accent"
+      routerLink="/auth/signup"
+    >
+      Sign Up
+    </a>
+
+    <a
+      mat-flat-button
+      color="accent"
+      routerLink="/auth/login"
+    >
+      Log In
+    </a>
+  </ng-template>
+</div>
