@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ExistingUser} from '../../../../features/users/models/users.model';
+import {ExistingUser} from '../../../../features/users/models/ExistingUser.model';
 
 @Component({
   selector: 'app-editable-user-list',
