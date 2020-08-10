@@ -15,6 +15,9 @@ export class EditableUserListComponent implements OnInit {
   @Output()
   userDelete = new EventEmitter<ExistingUser>();
 
+  @Output()
+  userEdit = new EventEmitter<ExistingUser>();
+
 
   constructor() {
   }
@@ -23,7 +26,11 @@ export class EditableUserListComponent implements OnInit {
   }
 
   // TODO норм название? (хз)
-  handleDeleteUser(user: ExistingUser): void {
+  handleDeleteUserButtonClick(user: ExistingUser): void {
     this.userDelete.emit(user);
+  }
+
+  handleEditUserButtonClick(user: ExistingUser): void {
+    this.userEdit.emit(user);
   }
 }

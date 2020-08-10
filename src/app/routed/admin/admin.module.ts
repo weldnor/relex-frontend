@@ -11,10 +11,19 @@ import { EditableUserListComponent } from './components/editable-user-list/edita
 import {MatListModule} from '@angular/material/list';
 import {CommonModule} from '@angular/common';
 import { EditableGroupListComponent } from './components/editable-group-list/editable-group-list.component';
+import { AddUserDialogDialog } from './components/add-user-dialog/add-user-dialog.dialog';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {FormsModule} from '@angular/forms';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import { EditUserDialogDialog } from './components/edit-user-dialog/edit-user-dialog.dialog';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 @NgModule({
-  declarations: [AdminPage, UsersPage, GroupsPage, EditableUserListComponent, EditableGroupListComponent],
+  declarations: [AdminPage, UsersPage, GroupsPage, EditableUserListComponent, EditableGroupListComponent, AddUserDialogDialog, EditUserDialogDialog],
   imports: [
     AdminRoutingModule,
     MatTabsModule,
@@ -22,6 +31,13 @@ import { EditableGroupListComponent } from './components/editable-group-list/edi
     SharedModule,
     MatListModule,
     CommonModule,
+    MatToolbarModule,
+    FormsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatCheckboxModule,
   ]
 })
 export class AdminModule {

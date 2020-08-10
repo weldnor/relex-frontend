@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {ExistingUser} from '../models/ExistingUser.model';
 import {Observable} from 'rxjs';
 import {environment} from '../../../../environments/environment';
+import {UserRole} from '../models/user-role.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,58 @@ export class UserService {
 
   deleteUserById(id: number): Observable<void> {
     return this.http.delete<void>(`${environment.api}/users/${id}`);
+  }
+
+  createUserAsAdmin(
+    username: string,
+    password: string,
+    role: UserRole,
+    firstName: string,
+    lastName: string,
+    phone: string,
+    email: string
+  ): Observable<void> {
+    const data = {
+      username,
+      password,
+      role,
+      personalInfo: {
+        firstName,
+        lastName,
+        phone,
+        email
+      }
+    };
+    return this.http
+      .post<void>(`${environment.api}/public/reg`, data);
+  }
+
+  editUserAsAdmin(
+    id: number,
+    password: string,
+    role: UserRole,
+    isActive: boolean,
+    isLocked: boolean,
+    firstName: string,
+    lastName: string,
+    phone: string,
+    email: string
+  ): Observable<void> {
+    const data = {
+      password,
+      role,
+      status: {
+        isActive,
+        isLocked
+      },
+      personalInfo: {
+        firstName,
+        lastName,
+        phone,
+        email
+      }
+    };
+    return this.http
+      .put<void>(`${environment.api}/users/${id}`, data);
   }
 }
