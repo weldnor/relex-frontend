@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {ExistingUser} from '../models/ExistingUser.model';
 import {Observable} from 'rxjs';
 import {environment} from '../../../../environments/environment';
 import {UserRole} from '../models/user-role.model';
 import {map} from 'rxjs/operators';
+import {ExistingUser} from '../models/existing-user.model';
 
 @Injectable({
   providedIn: 'root'

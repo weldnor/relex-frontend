@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ExistingGroup} from '../../../../features/groups/models/groups.model';
 import {Router} from '@angular/router';
+import {ExistingGroup} from '../../../../features/groups/models/existing-group.model';
 
 @Component({
   selector: 'app-editable-group-list',

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ExistingUser} from '../../../../features/users/models/ExistingUser.model';
+import {ExistingUser} from '../../../../features/users/models/existing-user.model';
 import {UserService} from '../../../../features/users/services/users.service';
 import {AddUserDialogDialog} from '../../components/add-user-dialog/add-user-dialog.dialog';
 import {MatDialog} from '@angular/material/dialog';

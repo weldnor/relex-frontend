@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {UserRole} from '../../../../features/users/models/user-role.model';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {UserService} from '../../../../features/users/services/users.service';
-import {ExistingUser} from '../../../../features/users/models/ExistingUser.model';
+import {ExistingUser} from '../../../../features/users/models/existing-user.model';
 
 interface FormValue {
   password: string;

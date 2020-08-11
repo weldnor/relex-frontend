@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {GroupService} from '../../../../features/groups/services/groups.service';
-import {ExistingGroup} from '../../../../features/groups/models/groups.model';
+import {ExistingGroup} from '../../../../features/groups/models/existing-group.model';
 
 @Component({
   templateUrl: './group-info.page.html',

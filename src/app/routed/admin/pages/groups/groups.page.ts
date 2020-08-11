@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ExistingGroup} from '../../../../features/groups/models/groups.model';
 import {MatDialog} from '@angular/material/dialog';
 import {GroupService} from '../../../../features/groups/services/groups.service';
 import {AddGroupDialogDialog} from '../../components/add-group-dialog/add-group-dialog.dialog';
+import {ExistingGroup} from '../../../../features/groups/models/existing-group.model';
 
 @Component({
   selector: 'app-groups',

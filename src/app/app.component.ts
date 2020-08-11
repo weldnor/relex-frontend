@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ExistingUser} from './features/users/models/ExistingUser.model';
+import {ExistingUser} from './features/users/models/existing-user.model';
 import {CurrentUserService} from './core/auth/current-user.service';
 
 @Component({

@@ -2,10 +2,11 @@ import {APP_INITIALIZER, Injectable, Provider} from '@angular/core';
 import {BehaviorSubject, Observable, of, pipe} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {catchError, switchMap, tap} from 'rxjs/operators';
-import {ExistingUser} from '../../features/users/models/ExistingUser.model';
+import {ExistingUser} from '../../features/users/models/existing-user.model';
 import {environment} from '../../../environments/environment';
 import {UserRole} from '../../features/users/models/user-role.model';
-import {NewUser, PersonalInfo} from '../../features/users/models/NewUser.model';
+import {PersonalInfo} from '../../features/users/models/personal-info.model';
+import {NewUser} from '../../features/users/models/new-user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -60,7 +61,6 @@ export class CurrentUserService {
 
   getId(): number {
     return this.user$.getValue().id;
-    console.info(this.user$.getValue().id);
   }
 
   createUser(

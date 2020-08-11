@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ExistingUser} from '../../../../features/users/models/ExistingUser.model';
+import {ExistingUser} from '../../../../features/users/models/existing-user.model';
 import {UserRole} from '../../../../features/users/models/user-role.model';
 
 @Component({
