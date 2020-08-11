@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CurrentUserService } from '../../../../core/auth/current-user.service';
-import { Router } from '@angular/router';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import {emailRegExp} from '../../validators/email-validator.directive';
+import {phoneRegExp} from '../../validators/phone-validator.directive';
+import {nameRegExp} from '../../validators/name-validator.directive';
 
 interface SignUpFormData {
   username: string;
@@ -17,13 +24,28 @@ interface SignUpFormData {
 })
 export class SignUpPage implements OnInit {
   error = false;
+  form: FormGroup;
 
   constructor(
     private readonly currentUserService: CurrentUserService,
-    private readonly router: Router
-  ) {}
+    private readonly fb: FormBuilder
+  ) {
+    this.form = this.initForm();
+  }
+
+  private initForm(): FormGroup {
+    return this.fb.group({
+      username: this.fb.control('', [Validators.required]),
+      password: this.fb.control(''),
+      firstName: this.fb.control('', [Validators.required, nameRegExp]),
+      lastName: this.fb.control('', [Validators.required, nameRegExp]),
+      phone: this.fb.control('', [Validators.required, phoneRegExp]),
+      email: this.fb.control('', [Validators.required, emailRegExp]),
+    });
+  }
 
   ngOnInit(): void {}
+
   handleFormSubmit(value: SignUpFormData): void {
     console.log(value);
     this.error = false;
@@ -38,7 +60,7 @@ export class SignUpPage implements OnInit {
       )
       .subscribe(
         () => {
-          this.router.navigate(['/']);
+          this.currentUserService.login(value.username, value.password);
         },
         (error) => {
           console.error('Error', error);

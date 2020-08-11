@@ -1,11 +1,11 @@
 import {APP_INITIALIZER, Injectable, Provider} from '@angular/core';
-import {BehaviorSubject, Observable, of} from 'rxjs';
+import {BehaviorSubject, Observable, of, pipe} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {catchError, switchMap, tap} from 'rxjs/operators';
 import {ExistingUser} from '../../features/users/models/ExistingUser.model';
 import {environment} from '../../../environments/environment';
 import {UserRole} from '../../features/users/models/user-role.model';
-import {NewUser} from '../../features/users/models/NewUser.model';
+import {NewUser, PersonalInfo} from '../../features/users/models/NewUser.model';
 
 @Injectable({
   providedIn: 'root',
@@ -66,23 +66,27 @@ export class CurrentUserService {
   createUser(
     username: string,
     password: string,
-    firstName: string,
+    fname: string,
     lastName: string,
     phone: string,
     email: string
   ): Observable<void> {
     const role: UserRole = UserRole.USER;
-    const data: NewUser = {
-      username,
-      password,
+    const firstName = fname;
+    const personalInfo: PersonalInfo = {
       firstName,
       lastName,
       phone,
-      email,
+      email
+    };
+    const data: NewUser = {
+      username,
+      password,
+      personalInfo,
       role
     };
     return this.http
-      .post<void>(`${environment.api}/users`, data)
+      .post<void>(`${environment.api}/public/reg`, data)
       .pipe(switchMap(() => this.refreshCurrentUser()));
   }
 }
