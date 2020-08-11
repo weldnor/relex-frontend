@@ -2,11 +2,13 @@
   <ng-container *ngIf="users != undefined">
 
     <mat-list-item *ngFor="let user of users" class="item">
-      <div class="item-body">
-        <div>{{user.username}}</div>
-        <button (click)="handleEditUserButtonClick(user)">edit</button>
-        <button (click)="handleDeleteUserButtonClick(user)">delete</button>
-      </div>
+      <div>{{user.username}}</div>
+      <div class="admin-label" *ngIf="user.role === UserRole.ADMIN">admin</div>
+      <div class="separator"></div>
+      <button mat-stroked-button class="edit-button" color="accent" (click)="handleEditUserButtonClick(user)">edit
+      </button>
+      <button mat-stroked-button class="delete-button" color="warn" (click)="handleDeleteUserButtonClick(user)">delete
+      </button>
     </mat-list-item>
 
   </ng-container>
