@@ -1,1 +1,12 @@
-<app-editable-user-list [users]="users" (userDelete)="handleUserDelete($event)"></app-editable-user-list>
+<mat-toolbar>
+  <mat-toolbar-row>
+    <button mat-stroked-button (click)="handleUserCreate()">Create User</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<app-editable-user-list
+  [users]="users"
+  (userDelete)="handleUserDelete($event)"
+  (userEdit)="handleUserEdit($event)"
+>
+</app-editable-user-list>

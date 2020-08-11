@@ -1,0 +1,56 @@
+<h1 mat-dialog-title>
+  Add new User
+</h1>
+
+<mat-error *ngIf="error">
+  Oops! Something is wrong
+</mat-error>
+
+
+<mat-dialog-content class="content">
+  <form #form="ngForm" class="form">
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input type="text" ngModel matInput name="username" required/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input type="text" ngModel matInput name="password" required/>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Role</mat-label>
+      <mat-select ngModel name="role" required>
+        <mat-option value="USER">User</mat-option>
+        <mat-option value="ADMIN">Admin</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Firstname</mat-label>
+      <input type="text" ngModel matInput name="firstName" required/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Lastname</mat-label>
+      <input type="text" ngModel matInput name="lastName" required/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input type="text" ngModel matInput name="email" required/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Phone</mat-label>
+      <input type="text" ngModel matInput name="phone" required/>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button [disabled]="!form.valid" (click)="handleSaveClick(form.value)">
+    Save
+  </button>
+  <button mat-button mat-dialog-close="undefined">
+    Cancel
+  </button>
+</mat-dialog-actions>
+
