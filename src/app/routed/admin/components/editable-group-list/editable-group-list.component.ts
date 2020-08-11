@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ExistingGroup} from '../../../../features/groups/models/groups.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-editable-group-list',
@@ -15,7 +16,9 @@ export class EditableGroupListComponent implements OnInit {
   groupDelete = new EventEmitter<ExistingGroup>();
 
 
-  constructor() {
+  constructor(
+    private readonly route: Router
+  ) {
   }
 
   ngOnInit(): void {
@@ -23,5 +26,13 @@ export class EditableGroupListComponent implements OnInit {
 
   handleDeleteGroup(group: ExistingGroup): void {
     this.groupDelete.emit(group);
+  }
+
+  handleEditGroup(group: ExistingGroup): void {
+    // TODO
+  }
+
+  handleClickOnGroup(group: ExistingGroup): void {
+    this.route.navigate([`/admin/groups/${group.id}`]);
   }
 }

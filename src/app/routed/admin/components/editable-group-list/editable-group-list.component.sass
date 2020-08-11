@@ -1,3 +1,16 @@
+@import "src/custom-theme"
+@import '~@angular/material/theming'
+@include mat-core()
+
 .item
   &:hover
-    background-color: rgba(0,0,0,.1)
+    background-color: rgba(0, 0, 0, .1)
+
+.separator
+  flex: 1
+
+.delete-button
+  margin-left: 5px
+
+.edit-button
+  margin-left: 5px

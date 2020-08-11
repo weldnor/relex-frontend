@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {GroupService} from '../../../../features/groups/services/groups.service';
 import {ExistingGroup} from '../../../../features/groups/models/groups.model';
+import {MatDialog} from '@angular/material/dialog';
+import {GroupService} from '../../../../features/groups/services/groups.service';
+import {AddGroupDialogDialog} from '../../components/add-group-dialog/add-group-dialog.dialog';
 
 @Component({
   selector: 'app-groups',
@@ -11,7 +13,10 @@ export class GroupsPage implements OnInit {
 
   groups?: ExistingGroup[];
 
-  constructor(private readonly groupService: GroupService) {
+  constructor(
+    private readonly groupService: GroupService,
+    private readonly dialog: MatDialog
+  ) {
   }
 
   ngOnInit(): void {
@@ -26,6 +31,12 @@ export class GroupsPage implements OnInit {
 
   handleGroupDelete(group: ExistingGroup): void {
     this.groupService.deleteGroupById(group.id).subscribe(() => {
+      this.refreshList();
+    });
+  }
+
+  handleGroupCreate(): void {
+    this.dialog.open(AddGroupDialogDialog).afterClosed().subscribe(() => {
       this.refreshList();
     });
   }

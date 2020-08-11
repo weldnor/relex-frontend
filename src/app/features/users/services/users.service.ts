@@ -4,6 +4,7 @@ import {ExistingUser} from '../models/ExistingUser.model';
 import {Observable} from 'rxjs';
 import {environment} from '../../../../environments/environment';
 import {UserRole} from '../models/user-role.model';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -77,4 +78,15 @@ export class UserService {
     return this.http
       .put<void>(`${environment.api}/users/${id}`, data);
   }
+
+  getAdmins(): Observable<ExistingUser[]> {
+    return this.getAllUsers().pipe(
+      map(
+        (users) => {
+          return users.filter(user => user.role === UserRole.ADMIN);
+        }
+      )
+    );
+  }
+
 }

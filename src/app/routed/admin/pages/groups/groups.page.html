@@ -1,1 +1,7 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <button mat-stroked-button (click)="handleGroupCreate()">Create Group</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
 <app-editable-group-list [groups]="groups" (groupDelete)="handleGroupDelete($event)"></app-editable-group-list>
