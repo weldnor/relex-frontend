@@ -20,25 +20,29 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { EditUserDialogDialog } from './components/edit-user-dialog/edit-user-dialog.dialog';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { AddGroupDialogDialog } from './components/add-group-dialog/add-group-dialog.dialog';
+import {MatTableModule} from '@angular/material/table';
+import { GroupInfoPage } from './pages/group-info/group-info.page';
 
 
 @NgModule({
-  declarations: [AdminPage, UsersPage, GroupsPage, EditableUserListComponent, EditableGroupListComponent, AddUserDialogDialog, EditUserDialogDialog],
-  imports: [
-    AdminRoutingModule,
-    MatTabsModule,
-    MatButtonModule,
-    SharedModule,
-    MatListModule,
-    CommonModule,
-    MatToolbarModule,
-    FormsModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatCheckboxModule,
-  ]
+  declarations: [AdminPage, UsersPage, GroupsPage, EditableUserListComponent, EditableGroupListComponent, AddUserDialogDialog, EditUserDialogDialog, AddGroupDialogDialog, GroupInfoPage],
+    imports: [
+        AdminRoutingModule,
+        MatTabsModule,
+        MatButtonModule,
+        SharedModule,
+        MatListModule,
+        CommonModule,
+        MatToolbarModule,
+        FormsModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatCheckboxModule,
+        MatTableModule,
+    ]
 })
 export class AdminModule {
 }

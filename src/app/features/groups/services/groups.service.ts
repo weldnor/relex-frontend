@@ -18,4 +18,22 @@ export class GroupService {
   deleteGroupById(id: number): Observable<void> {
     return this.http.delete<void>(`${environment.api}/groups/${id}`);
   }
+
+  createGroup(groupName: string, groupDescription: string, groupAdminId: number): Observable<void> {
+    const data = {
+      groupName,
+      description: groupDescription,
+      groupAdminId
+    };
+
+    return this.http.post<void>(`${environment.api}/groups/`, data);
+  }
+
+  getGroupById(id: number): Observable<ExistingGroup> {
+    return this.http.get<ExistingGroup>(`${environment.api}/groups/${id}`);
+  }
+
+  getGroupMembers(id: number): Observable<ExistingGroup> {
+    return this.http.get<ExistingGroup>(`${environment.api}/groups/${id}`);
+  }
 }

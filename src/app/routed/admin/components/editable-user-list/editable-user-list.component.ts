@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ExistingUser} from '../../../../features/users/models/ExistingUser.model';
+import {UserRole} from '../../../../features/users/models/user-role.model';
 
 @Component({
   selector: 'app-editable-user-list',
@@ -7,7 +8,6 @@ import {ExistingUser} from '../../../../features/users/models/ExistingUser.model
   styleUrls: ['./editable-user-list.component.sass']
 })
 export class EditableUserListComponent implements OnInit {
-
 
   @Input()
   users: ExistingUser[];
@@ -18,6 +18,8 @@ export class EditableUserListComponent implements OnInit {
   @Output()
   userEdit = new EventEmitter<ExistingUser>();
 
+  // HACK
+  UserRole = UserRole;
 
   constructor() {
   }

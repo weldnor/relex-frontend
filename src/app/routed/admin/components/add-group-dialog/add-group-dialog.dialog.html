@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>
+  Add new Group
+</h1>
+
+<mat-error *ngIf="error">
+  Oops! Something is wrong
+</mat-error>
+
+
+<mat-dialog-content class="content">
+  <form #form="ngForm" class="form">
+    <mat-form-field>
+      <mat-label>admin id</mat-label>
+      <input type="number" ngModel matInput name="groupAdminId" required/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>name</mat-label>
+      <input type="text" ngModel matInput name="groupName" required/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>description</mat-label>
+      <input type="text" ngModel matInput name="groupDescription" required/>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button [disabled]="!form.valid" (click)="handleSaveClick(form.value)">
+    Save
+  </button>
+  <button mat-button mat-dialog-close="undefined">
+    Cancel
+  </button>
+</mat-dialog-actions>
+
