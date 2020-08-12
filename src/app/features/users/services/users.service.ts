@@ -79,6 +79,33 @@ export class UserService {
       .put<void>(`${environment.api}/users/${id}`, data);
   }
 
+  editUserAsUser(
+    id: number,
+    password: string,
+    role: UserRole,
+    firstName: string,
+    lastName: string,
+    phone: string,
+    email: string
+  ): Observable<void> {
+    const data = {
+      password,
+      role,
+      status: {
+        isActive: true,
+        isLocked: false
+      },
+      personalInfo: {
+        firstName,
+        lastName,
+        phone,
+        email
+      }
+    };
+    return this.http
+      .put<void>(`${environment.api}/users/${id}`, data);
+  }
+
   getAdmins(): Observable<ExistingUser[]> {
     return this.getAllUsers().pipe(
       map(

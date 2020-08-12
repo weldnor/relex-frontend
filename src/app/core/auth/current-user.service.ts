@@ -1,12 +1,12 @@
-import {APP_INITIALIZER, Injectable, Provider} from '@angular/core';
-import {BehaviorSubject, Observable, of, pipe} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
-import {catchError, switchMap, tap} from 'rxjs/operators';
-import {ExistingUser} from '../../features/users/models/existing-user.model';
-import {environment} from '../../../environments/environment';
-import {UserRole} from '../../features/users/models/user-role.model';
-import {PersonalInfo} from '../../features/users/models/personal-info.model';
-import {NewUser} from '../../features/users/models/new-user.model';
+import { APP_INITIALIZER, Injectable, Provider } from '@angular/core';
+import { BehaviorSubject, Observable, of, pipe } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { catchError, switchMap, tap } from 'rxjs/operators';
+import { ExistingUser } from '../../features/users/models/existing-user.model';
+import { environment } from '../../../environments/environment';
+import { UserRole } from '../../features/users/models/user-role.model';
+import { PersonalInfo } from '../../features/users/models/personal-info.model';
+import { NewUser } from '../../features/users/models/new-user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -59,6 +59,10 @@ export class CurrentUserService {
     );
   }
 
+  getCurrentUser(): BehaviorSubject<ExistingUser | undefined> {
+    return this.user$;
+  }
+
   getId(): number {
     return this.user$.getValue().id;
   }
@@ -76,13 +80,13 @@ export class CurrentUserService {
       firstName,
       lastName,
       phone,
-      email
+      email,
     };
     const data: NewUser = {
       username,
       password,
       personalInfo,
-      role
+      role,
     };
     return this.http
       .post<void>(`${environment.api}/public/reg`, data)

@@ -2,13 +2,26 @@
   <ng-container
     *ngIf="user$ | async as user; else anonymousMenu"
   >
-    <span>{{ user.username }}</span>
-    <button mat-icon-button [mat-menu-trigger-for]="menu">
+    <a
+      mat-button
+      routerLink="/profile"
+      style="font-size: 15px; padding: 15px 15px"
+    >
+      {{ user.username }}
+    </a>
+    <button
+      mat-icon-button
+      [mat-menu-trigger-for]="menu"
+    >
       <mat-icon>more_vert</mat-icon>
     </button>
 
     <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="handleLogoutClick()">
+      <button
+        mat-menu-item
+        (click)="handleLogoutClick()"
+        routerLink="/"
+      >
         Log out
       </button>
     </mat-menu>

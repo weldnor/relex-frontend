@@ -23,7 +23,6 @@ export class EditUserDialogDialog implements OnInit {
   user: ExistingUser;
   error = false;
 
-
   constructor(
     @Inject(MAT_DIALOG_DATA) private readonly data,
     private readonly dialogRef: MatDialogRef<EditUserDialogDialog, undefined>,

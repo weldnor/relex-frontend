@@ -33,7 +33,6 @@ export class EditableUserListComponent implements OnInit {
         this.userDelete.emit(user);
     }
 
-
     handleInfo(user: ExistingUser): void {
         this.userInfo.emit(user);
     }

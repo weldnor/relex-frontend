@@ -11,8 +11,7 @@ export class UserMenuComponent implements OnInit {
 
   constructor(
     private readonly currentUserService: CurrentUserService
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
   }

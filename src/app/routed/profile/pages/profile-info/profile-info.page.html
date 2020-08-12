@@ -1,0 +1,102 @@
+<form
+  [formGroup]="form"
+  class="regCard"
+  (ngSubmit)="handleFormSubmit(form.value)"
+>
+  <mat-card>
+    <mat-card-title class="loginLabel">Hello, {{user.username}} !</mat-card-title>
+    <span style="margin: 8px">Your profile info</span>
+
+    <mat-card-content class="content">
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <label>
+          <input
+            matInput
+            type="password"
+            formControlName="password"
+            name="password"
+            required
+          />
+        </label>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <label>
+          <input
+            matInput
+            formControlName="firstName"
+            name="firstName"
+            required
+          />
+        </label>
+        <mat-error *ngFor="let error of form.get('firstName')?.errors | errorsToArray">
+          {{error | displayError}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <label>
+          <input
+            matInput
+            formControlName="lastName"
+            required
+          />
+        </label>
+        <mat-error *ngFor="let error of form.get('lastName')?.errors | errorsToArray">
+          {{error | displayError}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <label>
+          <input
+            matInput
+            type="email"
+            formControlName="email"
+            required
+          />
+        </label>
+        <mat-error *ngFor="let error of form.get('email')?.errors | errorsToArray">
+          {{error | displayError}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Phone</mat-label>
+        <label>
+          <input
+            matInput
+            formControlName="phone"
+            required
+          />
+        </label>
+        <mat-error *ngFor="let error of form.get('phone')?.errors | errorsToArray">
+          {{error | displayError}}
+        </mat-error>
+      </mat-form-field>
+
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+      <button
+        class="delete-button"
+        mat-flat-button
+        color="warn"
+      >
+        Delete Profile
+      </button>
+      <button
+        mat-flat-button
+        color="primary"
+        [disabled]="!form.valid"
+      >
+        Save
+      </button>
+      <a mat-flat-button routerLink="/">Cancel</a>
+    </mat-card-actions>
+  </mat-card>
+</form>

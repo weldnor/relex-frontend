@@ -37,6 +37,9 @@
             name="firstName"
             required
           />
+          <mat-error *ngFor="let error of form.get('firstName')?.errors | errorsToArray">
+            {{error | displayError}}
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
@@ -47,6 +50,9 @@
             name="lastName"
             required
           />
+          <mat-error *ngFor="let error of form.get('lastName')?.errors | errorsToArray">
+            {{error | displayError}}
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
@@ -71,6 +77,9 @@
             name="phone"
             required
           />
+          <mat-error *ngFor="let error of form.get('phone')?.errors | errorsToArray">
+            {{error | displayError}}
+          </mat-error>
         </mat-form-field>
 
       </mat-card-content>

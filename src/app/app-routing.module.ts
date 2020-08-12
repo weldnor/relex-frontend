@@ -22,6 +22,10 @@ const routes: Routes = [
     loadChildren: () => import('./routed/auth/auth.module').then(m => m.AuthModule)
   },
   {
+    path: 'profile',
+    loadChildren: () => import('./routed/profile/profile.module').then(m => m.ProfileModule)
+  },
+  {
     path: '**',
     component: NotFoundPage
   }
