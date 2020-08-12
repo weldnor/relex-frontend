@@ -16,6 +16,7 @@ import {AdminModule} from './routed/admin/admin.module';
 import {MatListModule} from '@angular/material/list';
 import {SharedModule} from './routed/shared/shared.module';
 import {ValidationModule} from './features/validators/validation.module';
+import { GroupsModule } from './routed/groups/groups.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {ValidationModule} from './features/validators/validation.module';
     MatListModule,
     CoreModule,
     SharedModule,
-    ValidationModule
+    ValidationModule,
+    GroupsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

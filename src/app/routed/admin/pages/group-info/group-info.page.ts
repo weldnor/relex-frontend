@@ -13,6 +13,7 @@ export class GroupInfoPage implements OnInit {
   error = false;
   group?: ExistingGroup;
   members?: ExistingUser[];
+  private groupId: number;
 
 
   constructor(
@@ -23,13 +24,16 @@ export class GroupInfoPage implements OnInit {
   }
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.groupService.getGroupById(id).subscribe(group => {
+    this.groupId = Number(this.route.snapshot.paramMap.get('id'));
+    this.refreshAll();
+  }
+
+  refreshAll(): void {
+    this.groupService.getGroupById(this.groupId).subscribe(group => {
       this.group = group;
     });
-    this.groupService.getGroupMembers(id).subscribe(members => {
+    this.groupService.getGroupMembers(this.groupId).subscribe(members => {
       this.members = members;
-      console.log(members);
     });
   }
 
@@ -38,7 +42,9 @@ export class GroupInfoPage implements OnInit {
   }
 
   handleMemberDelete(member: ExistingUser): void {
-    // TODO
+    this.groupService.deleteGroupMember(this.group.id, member.id).subscribe(() => {
+      this.refreshAll();
+    });
   }
 
   handleMemberInfo(member: ExistingUser): void {

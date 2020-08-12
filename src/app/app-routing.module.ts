@@ -18,6 +18,10 @@ const routes: Routes = [
     loadChildren: () => import('./routed/admin/admin.module').then(m => m.AdminModule)
   },
   {
+    path: 'groups',
+    loadChildren: () => import('./routed/groups/groups.module').then(m => m.GroupsModule)
+  },
+  {
     path: 'auth',
     loadChildren: () => import('./routed/auth/auth.module').then(m => m.AuthModule)
   },
