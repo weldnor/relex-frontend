@@ -3,6 +3,7 @@
 
     <mat-list-item *ngFor="let user of users" class="item" (click)="handleInfo(user)">
       <div>{{user.username}}</div>
+      <div class="admin-label" *ngIf="user.role === UserRole.ADMIN">admin</div>
       <div class="separator"></div>
       <button mat-stroked-button class="delete-button" (click)="handleEdit($event, user)">edit
       </button>

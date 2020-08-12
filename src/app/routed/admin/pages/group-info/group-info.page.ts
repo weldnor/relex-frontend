@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {GroupService} from '../../../../features/groups/services/groups.service';
 import {ExistingGroup} from '../../../../features/groups/models/existing-group.model';
 import {ExistingUser} from '../../../../features/users/models/existing-user.model';
+import {UpdateGroupFormData} from '../../models/update-group-form-data.model';
 
 @Component({
   templateUrl: './group-info.page.html',
@@ -12,6 +13,7 @@ export class GroupInfoPage implements OnInit {
   error = false;
   group?: ExistingGroup;
   members?: ExistingUser[];
+  private groupId: number;
 
 
   constructor(
@@ -22,22 +24,27 @@ export class GroupInfoPage implements OnInit {
   }
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.groupService.getGroupById(id).subscribe(group => {
+    this.groupId = Number(this.route.snapshot.paramMap.get('id'));
+    this.refreshAll();
+  }
+
+  refreshAll(): void {
+    this.groupService.getGroupById(this.groupId).subscribe(group => {
       this.group = group;
     });
-    this.groupService.getGroupMembers(id).subscribe(members => {
+    this.groupService.getGroupMembers(this.groupId).subscribe(members => {
       this.members = members;
-      console.log(members);
     });
   }
 
-  handleSave(): void {
+  handleSave(data: UpdateGroupFormData): void {
     // TODO
   }
 
   handleMemberDelete(member: ExistingUser): void {
-    // TODO
+    this.groupService.deleteGroupMember(this.group.id, member.id).subscribe(() => {
+      this.refreshAll();
+    });
   }
 
   handleMemberInfo(member: ExistingUser): void {
@@ -46,5 +53,9 @@ export class GroupInfoPage implements OnInit {
 
   handleMemberEdit($event: ExistingUser): void {
     // TODO
+  }
+
+  handleGoBack(): void {
+    this.router.navigate([`/admin/groups`]);
   }
 }

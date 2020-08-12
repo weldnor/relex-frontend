@@ -5,9 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import {emailRegExp} from '../../validators/email-validator.directive';
-import {phoneRegExp} from '../../validators/phone-validator.directive';
-import {nameRegExp} from '../../validators/name-validator.directive';
+import {emailRegExp} from '../../../../features/validators/directives/email-validator.directive';
+import {phoneRegExp} from '../../../../features/validators/directives/phone-validator.directive';
+import {nameRegExp} from '../../../../features/validators/directives/name-validator.directive';
 
 interface SignUpFormData {
   username: string;

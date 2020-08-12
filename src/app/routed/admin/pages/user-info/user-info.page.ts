@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ExistingGroup} from '../../../../features/groups/models/existing-group.model';
-import {ActivatedRoute} from '@angular/router';
-import {GroupService} from '../../../../features/groups/services/groups.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ExistingUser} from '../../../../features/users/models/existing-user.model';
+import {UserService} from '../../../../features/users/services/users.service';
 
 @Component({
   templateUrl: './user-info.page.html',
@@ -9,21 +9,29 @@ import {GroupService} from '../../../../features/groups/services/groups.service'
 })
 export class UserInfoPage implements OnInit {
 
-  group?: ExistingGroup;
+  error = false;
+  user?: ExistingUser;
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly groupService: GroupService
+    private readonly userService: UserService,
+    private readonly router: Router
   ) {
   }
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.groupService.getGroupById(id).subscribe(group => {
-      this.group = group;
+    this.userService.getUserById(id).subscribe(user => {
+      this.user = user;
+      console.log(user);
     });
-    // this.groupService.getGroupMembers(id).subscribe(group => {
-    //   this.group = group;
-    // });
+  }
+
+  handleSaveClick(value: any): void {
+
+  }
+
+  handleGoBack(): void {
+    this.router.navigate(['/admin/users']);
   }
 }

@@ -1,4 +1,21 @@
-<nav>
-  <a mat-button routerLink="users">Users</a>
-  <a mat-button routerLink="groups">Groups</a>
+<nav mat-tab-nav-bar>
+  <a
+    mat-tab-link
+    routerLink="users"
+    routerLinkActive
+    #usersActive="routerLinkActive"
+    [active]="usersActive.isActive"
+  >
+    Users
+  </a>
+  <a
+    mat-tab-link
+    routerLink="groups"
+    routerLinkActive
+    #groupsActive="routerLinkActive"
+    [active]="groupsActive.isActive"
+  >
+    Groups
+  </a>
 </nav>
+<router-outlet></router-outlet>

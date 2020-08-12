@@ -37,4 +37,21 @@ export class GroupService {
   getGroupMembers(id: number): Observable<ExistingUser[]> {
     return this.http.get<ExistingUser[]>(`${environment.api}/groups/${id}/users`);
   }
+
+  deleteGroupMember(groupId: number, userId: number): Observable<void> {
+    const data = {
+      groupId,
+      userId
+    };
+    return this.http.request('delete', `${environment.api}/groups/deleteMember`, {body: data}) as unknown as Observable<void>;
+  }
+
+  getUserGroups(userId: number): Observable<ExistingGroup[]> {
+    return this.http.get<ExistingGroup[]>(`${environment.api}/groups/userGroups/${userId}`);
+  }
+
+  // TODO
+  // updateGroup(id: number): Observable<ExistingUser[]> {
+  //   return this.http.put<ExistingUser[]>(`${environment.api}/groups/${id}/users`);
+  // }
 }

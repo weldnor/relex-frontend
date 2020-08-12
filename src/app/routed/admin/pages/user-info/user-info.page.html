@@ -1,8 +1,63 @@
-<!--<ng-container *ngIf="group != undefined">-->
-<!--  {{group.groupName}}-->
-<!--  {{group.balance}}-->
-<!--  {{group.createdAt}}-->
-<!--  {{group.createdBy}}-->
-<!--  {{group.groupDescription}}-->
-<!--  {{group.joinCode}}-->
-<!--</ng-container>-->
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Edit User</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+
+
+    <mat-error *ngIf="error">
+      Oops! Something is wrong
+    </mat-error>
+
+
+    <form #form="ngForm" class="form">
+      <mat-form-field appearance="fill">
+        <mat-label>Role</mat-label>
+        <mat-select [ngModel]="user?.role" name="role" required>
+          <mat-option value="USER">User</mat-option>
+          <mat-option value="ADMIN">Admin</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!--    FIXME-->
+      <section class="checkbox-section">
+        <mat-checkbox ngModel name="isActive" class="is-active-checkbox" [ngModel]="user?.userstatus?.isActive">is Active</mat-checkbox>
+        <mat-checkbox ngModel name="isLocked" class="is-locked-checkbox" [ngModel]="user?.userstatus?.isLocked">is Locked</mat-checkbox>
+      </section>
+
+      <mat-form-field>
+        <mat-label>Firstname</mat-label>
+        <input type="text" [ngModel]="user?.personalInfo?.firstName" matInput name="firstName" required/>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Lastname</mat-label>
+        <input type="text" [ngModel]="user?.personalInfo?.lastName" matInput name="lastName" required/>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input type="text" [ngModel]="user?.personalInfo?.email" matInput name="email" required/>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Phone</mat-label>
+        <input type="text" [ngModel]="user?.personalInfo?.phone" matInput name="phone" required/>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input type="text" ngModel matInput name="password" required/>
+      </mat-form-field>
+    </form>
+
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button [disabled]="!form.valid" (click)="handleSaveClick(form.value)">
+      Save
+    </button>
+    <button mat-button (click)="handleGoBack()">
+      Go back
+    </button>
+  </mat-card-actions>
+
+</mat-card>
