@@ -1,5 +1,5 @@
-import { Directive } from '@angular/core';
-import {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
+import {Directive, forwardRef} from '@angular/core';
+import {AbstractControl, NG_VALIDATORS, ValidationErrors, ValidatorFn} from '@angular/forms';
 
 export const nameRegExp: ValidatorFn = (control) => {
   if (/^.{1,50}$/.test(control.value)) {
@@ -12,7 +12,16 @@ export const nameRegExp: ValidatorFn = (control) => {
 };
 
 @Directive({
-  selector: '[appNameValidator]'
+  selector: '[appNameValidator]',
+  providers: [
+    {
+      provide: NG_VALIDATORS,
+      useExisting: forwardRef(
+        () => NameValidatorDirective
+      ),
+      multi: true
+    }
+  ]
 })
 export class NameValidatorDirective {
 

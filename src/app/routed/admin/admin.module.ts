@@ -26,27 +26,30 @@ import { GroupInfoPage } from './pages/group-info/group-info.page';
 import { UserInfoPage } from './pages/user-info/user-info.page';
 import {MatCardModule} from '@angular/material/card';
 import { EditableMemberListComponent } from './components/editable-member-list/editable-member-list.component';
+import {ValidationModule} from '../../features/validators/validation.module';
 
 
 @NgModule({
+  // tslint:disable-next-line:max-line-length
   declarations: [AdminPage, UsersPage, GroupsPage, EditableUserListComponent, EditableGroupListComponent, AddUserDialogDialog, EditUserDialogDialog, AddGroupDialogDialog, GroupInfoPage, UserInfoPage, EditableMemberListComponent],
-    imports: [
-        AdminRoutingModule,
-        MatTabsModule,
-        MatButtonModule,
-        SharedModule,
-        MatListModule,
-        CommonModule,
-        MatToolbarModule,
-        FormsModule,
-        MatDialogModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatSelectModule,
-        MatCheckboxModule,
-        MatTableModule,
-        MatCardModule,
-    ]
+  imports: [
+    AdminRoutingModule,
+    MatTabsModule,
+    MatButtonModule,
+    SharedModule,
+    MatListModule,
+    CommonModule,
+    MatToolbarModule,
+    FormsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatTableModule,
+    MatCardModule,
+    ValidationModule,
+  ]
 })
 export class AdminModule {
 }

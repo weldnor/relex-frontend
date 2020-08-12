@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ExistingUser} from '../../../../features/users/models/existing-user.model';
 import {UserService} from '../../../../features/users/services/users.service';
 import {AddUserDialogDialog} from '../../components/add-user-dialog/add-user-dialog.dialog';
+import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
-import {EditUserDialogDialog} from '../../components/edit-user-dialog/edit-user-dialog.dialog';
 
 @Component({
   selector: 'app-users',
@@ -15,6 +15,7 @@ export class UsersPage implements OnInit {
 
   constructor(
     private readonly userService: UserService,
+    private readonly router: Router,
     private readonly dialog: MatDialog
   ) {
   }
@@ -35,10 +36,8 @@ export class UsersPage implements OnInit {
     });
   }
 
-  handleUserEdit(user: ExistingUser): void {
-    this.dialog.open(EditUserDialogDialog, {data: user.id}).afterClosed().subscribe(() => {
-      this.refreshList();
-    });
+  handleUserInfo(user: ExistingUser): void {
+    this.router.navigate([`/admin/users/${user.id}`]);
   }
 
   handleUserCreate(): void {
