@@ -15,6 +15,7 @@ import {CoreModule} from './core/core.module';
 import {AdminModule} from './routed/admin/admin.module';
 import {MatListModule} from '@angular/material/list';
 import {SharedModule} from './routed/shared/shared.module';
+import {ValidationModule} from './features/validators/validation.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {SharedModule} from './routed/shared/shared.module';
     AdminModule,
     MatListModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    ValidationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

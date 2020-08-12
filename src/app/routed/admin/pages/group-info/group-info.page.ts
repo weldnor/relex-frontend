@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {GroupService} from '../../../../features/groups/services/groups.service';
 import {ExistingGroup} from '../../../../features/groups/models/existing-group.model';
 import {ExistingUser} from '../../../../features/users/models/existing-user.model';
+import {UpdateGroupFormData} from '../../models/update-group-form-data.model';
 
 @Component({
   templateUrl: './group-info.page.html',
@@ -32,7 +33,7 @@ export class GroupInfoPage implements OnInit {
     });
   }
 
-  handleSave(): void {
+  handleSave(data: UpdateGroupFormData): void {
     // TODO
   }
 
@@ -46,5 +47,9 @@ export class GroupInfoPage implements OnInit {
 
   handleMemberEdit($event: ExistingUser): void {
     // TODO
+  }
+
+  handleGoBack(): void {
+    this.router.navigate([`/admin/groups`]);
   }
 }

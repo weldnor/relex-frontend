@@ -3,30 +3,30 @@
 </mat-error>
 
 
-Edit new Group
+<h1>Edit Group</h1>
 
 
 <form #form="ngForm" class="form">
   <mat-form-field>
     <mat-label>admin id</mat-label>
-    <input type="number" ngModel matInput name="groupAdminId" required/>
+    <input type="number" [ngModel]="group?.createdBy" matInput name="groupAdminId" required/>
   </mat-form-field>
   <mat-form-field>
     <mat-label>name</mat-label>
-    <input type="text" ngModel matInput name="groupName" required/>
+    <input type="text" [ngModel]="group?.groupName" matInput name="groupName" required/>
   </mat-form-field>
   <mat-form-field>
     <mat-label>description</mat-label>
-    <input type="text" ngModel matInput name="groupDescription" required/>
+    <input type="text" [ngModel]="group?.groupDescription" matInput name="groupDescription" required/>
   </mat-form-field>
 </form>
 
 
-<button mat-button [disabled]="!form.valid">
+<button mat-button [disabled]="!form.valid" (click)="handleSave(form.value)">
   Save
 </button>
-<button mat-button mat-dialog-close="undefined">
-  Cancel
+<button mat-button mat-dialog-close (click)="handleGoBack()">
+  Go back
 </button>
 
 <app-editable-member-list

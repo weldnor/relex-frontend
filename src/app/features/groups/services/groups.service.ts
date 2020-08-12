@@ -37,4 +37,9 @@ export class GroupService {
   getGroupMembers(id: number): Observable<ExistingUser[]> {
     return this.http.get<ExistingUser[]>(`${environment.api}/groups/${id}/users`);
   }
+
+  // TODO
+  // updateGroup(id: number): Observable<ExistingUser[]> {
+  //   return this.http.put<ExistingUser[]>(`${environment.api}/groups/${id}/users`);
+  // }
 }
