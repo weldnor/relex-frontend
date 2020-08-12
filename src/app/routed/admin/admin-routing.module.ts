@@ -7,11 +7,13 @@ import {GroupInfoPage} from './pages/group-info/group-info.page';
 import {UserInfoPage} from './pages/user-info/user-info.page';
 
 const routes: Routes = [
-  {path: '', component: AdminPage},
-  {path: 'users', component: UsersPage},
-  {path: 'groups/:id', component: GroupInfoPage},
-  {path: 'users/:id', component: UserInfoPage},
-  {path: 'groups', component: GroupsPage}
+  {
+    path: '', component: AdminPage, children: [{path: 'users', component: UsersPage},
+      {path: 'groups/:id', component: GroupInfoPage},
+      {path: 'users/:id', component: UserInfoPage},
+      {path: 'groups', component: GroupsPage}]
+  },
+
 
 ];
 

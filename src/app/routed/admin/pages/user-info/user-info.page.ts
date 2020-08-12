@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ExistingUser} from '../../../../features/users/models/existing-user.model';
 import {UserService} from '../../../../features/users/services/users.service';
 
@@ -15,6 +15,7 @@ export class UserInfoPage implements OnInit {
   constructor(
     private readonly route: ActivatedRoute,
     private readonly userService: UserService,
+    private readonly router: Router
   ) {
   }
 
@@ -28,5 +29,9 @@ export class UserInfoPage implements OnInit {
 
   handleSaveClick(value: any): void {
 
+  }
+
+  handleGoBack(): void {
+    this.router.navigate(['/admin/users']);
   }
 }

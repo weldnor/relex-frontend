@@ -1,33 +1,42 @@
-<mat-error *ngIf="error">
-  Oops! Something is wrong
-</mat-error>
+<mat-card>
+
+  <mat-card-header>
+    <mat-card-title>Edit Group</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-error *ngIf="error">
+      Oops! Something is wrong
+    </mat-error>
 
 
-<h1>Edit Group</h1>
+    <form #form="ngForm" class="form">
+      <mat-form-field>
+        <mat-label>admin id</mat-label>
+        <input type="number" [ngModel]="group?.createdBy" matInput name="groupAdminId" required/>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>name</mat-label>
+        <input type="text" [ngModel]="group?.groupName" matInput name="groupName" required/>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>description</mat-label>
+        <input type="text" [ngModel]="group?.groupDescription" matInput name="groupDescription" required/>
+      </mat-form-field>
+    </form>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button [disabled]="!form.valid" (click)="handleSave(form.value)">
+      Save
+    </button>
+    <button mat-button mat-dialog-close (click)="handleGoBack()">
+      Go back
+    </button>
+  </mat-card-actions>
+</mat-card>
 
 
-<form #form="ngForm" class="form">
-  <mat-form-field>
-    <mat-label>admin id</mat-label>
-    <input type="number" [ngModel]="group?.createdBy" matInput name="groupAdminId" required/>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>name</mat-label>
-    <input type="text" [ngModel]="group?.groupName" matInput name="groupName" required/>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>description</mat-label>
-    <input type="text" [ngModel]="group?.groupDescription" matInput name="groupDescription" required/>
-  </mat-form-field>
-</form>
-
-
-<button mat-button [disabled]="!form.valid" (click)="handleSave(form.value)">
-  Save
-</button>
-<button mat-button mat-dialog-close (click)="handleGoBack()">
-  Go back
-</button>
+<h2>Members</h2>
 
 <app-editable-member-list
   [users]="members"
