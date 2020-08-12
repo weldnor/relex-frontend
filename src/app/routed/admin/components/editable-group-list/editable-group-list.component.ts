@@ -15,6 +15,9 @@ export class EditableGroupListComponent implements OnInit {
   @Output()
   groupDelete = new EventEmitter<ExistingGroup>();
 
+  @Output()
+  groupDetails = new EventEmitter<ExistingGroup>();
+
 
   constructor(
     private readonly route: Router
@@ -24,15 +27,13 @@ export class EditableGroupListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  handleDeleteGroup(group: ExistingGroup): void {
+  handleDelete($event, group: ExistingGroup): void {
+    // блокируем всплытие https://learn.javascript.ru/event-bubbling
+    $event.stopPropagation();
     this.groupDelete.emit(group);
   }
 
-  handleEditGroup(group: ExistingGroup): void {
-    // TODO
-  }
-
-  handleClickOnGroup(group: ExistingGroup): void {
-    this.route.navigate([`/admin/groups/${group.id}`]);
+  handleClick(group: ExistingGroup): void {
+    this.groupDetails.emit(group);
   }
 }

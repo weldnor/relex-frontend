@@ -3,6 +3,7 @@ import {Observable} from 'rxjs';
 import {environment} from '../../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {ExistingGroup} from '../models/existing-group.model';
+import {ExistingUser} from '../../users/models/existing-user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +34,7 @@ export class GroupService {
     return this.http.get<ExistingGroup>(`${environment.api}/groups/${id}`);
   }
 
-  getGroupMembers(id: number): Observable<ExistingGroup> {
-    return this.http.get<ExistingGroup>(`${environment.api}/groups/${id}`);
+  getGroupMembers(id: number): Observable<ExistingUser[]> {
+    return this.http.get<ExistingUser[]>(`${environment.api}/groups/${id}/users`);
   }
 }

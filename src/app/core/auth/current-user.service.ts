@@ -66,13 +66,12 @@ export class CurrentUserService {
   createUser(
     username: string,
     password: string,
-    fname: string,
+    firstName: string,
     lastName: string,
     phone: string,
     email: string
   ): Observable<void> {
     const role: UserRole = UserRole.USER;
-    const firstName = fname;
     const personalInfo: PersonalInfo = {
       firstName,
       lastName,

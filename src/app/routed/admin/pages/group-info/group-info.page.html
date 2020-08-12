@@ -1,8 +1,38 @@
-<ng-container *ngIf="group != undefined">
-  {{group.groupName}}
-  {{group.balance}}
-  {{group.createdAt}}
-  {{group.createdBy}}
-  {{group.groupDescription}}
-  {{group.joinCode}}
-</ng-container>
+<mat-error *ngIf="error">
+  Oops! Something is wrong
+</mat-error>
+
+
+Edit new Group
+
+
+<form #form="ngForm" class="form">
+  <mat-form-field>
+    <mat-label>admin id</mat-label>
+    <input type="number" ngModel matInput name="groupAdminId" required/>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>name</mat-label>
+    <input type="text" ngModel matInput name="groupName" required/>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>description</mat-label>
+    <input type="text" ngModel matInput name="groupDescription" required/>
+  </mat-form-field>
+</form>
+
+
+<button mat-button [disabled]="!form.valid">
+  Save
+</button>
+<button mat-button mat-dialog-close="undefined">
+  Cancel
+</button>
+
+<app-editable-member-list
+  [users]="members"
+  (userDelete)="handleMemberDelete($event)"
+  (userEdit)="handleMemberEdit($event)"
+  (userInfo)="handleMemberInfo($event)"
+>
+</app-editable-member-list>

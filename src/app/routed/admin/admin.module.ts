@@ -23,10 +23,13 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AddGroupDialogDialog } from './components/add-group-dialog/add-group-dialog.dialog';
 import {MatTableModule} from '@angular/material/table';
 import { GroupInfoPage } from './pages/group-info/group-info.page';
+import { UserInfoPage } from './pages/user-info/user-info.page';
+import {MatCardModule} from '@angular/material/card';
+import { EditableMemberListComponent } from './components/editable-member-list/editable-member-list.component';
 
 
 @NgModule({
-  declarations: [AdminPage, UsersPage, GroupsPage, EditableUserListComponent, EditableGroupListComponent, AddUserDialogDialog, EditUserDialogDialog, AddGroupDialogDialog, GroupInfoPage],
+  declarations: [AdminPage, UsersPage, GroupsPage, EditableUserListComponent, EditableGroupListComponent, AddUserDialogDialog, EditUserDialogDialog, AddGroupDialogDialog, GroupInfoPage, UserInfoPage, EditableMemberListComponent],
     imports: [
         AdminRoutingModule,
         MatTabsModule,
@@ -42,6 +45,7 @@ import { GroupInfoPage } from './pages/group-info/group-info.page';
         MatSelectModule,
         MatCheckboxModule,
         MatTableModule,
+        MatCardModule,
     ]
 })
 export class AdminModule {

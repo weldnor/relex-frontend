@@ -1,11 +1,10 @@
 <mat-list>
   <ng-container *ngIf="groups != undefined">
 
-    <mat-list-item *ngFor="let group of groups" class="item" (click)="handleClickOnGroup(group)">
+    <mat-list-item *ngFor="let group of groups" class="item" (click)="handleClick(group)">
       <div>{{group.groupName}}</div>
       <div class="separator"></div>
-      <button mat-stroked-button class="edit-button" (click)="handleEditGroup(group)">Edit</button>
-      <button mat-stroked-button class="delete-button" (click)="handleDeleteGroup(group)">Delete</button>
+      <button mat-stroked-button class="delete-button" (click)="handleDelete($event,group)">Delete</button>
     </mat-list-item>
   </ng-container>
 </mat-list>

@@ -4,4 +4,8 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<app-editable-group-list [groups]="groups" (groupDelete)="handleGroupDelete($event)"></app-editable-group-list>
+<app-editable-group-list
+  [groups]="groups"
+  (groupDelete)="handleGroupDelete($event)"
+  (groupDetails)="handleGroupDetails($event)"
+></app-editable-group-list>

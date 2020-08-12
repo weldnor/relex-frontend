@@ -3,6 +3,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {GroupService} from '../../../../features/groups/services/groups.service';
 import {AddGroupDialogDialog} from '../../components/add-group-dialog/add-group-dialog.dialog';
 import {ExistingGroup} from '../../../../features/groups/models/existing-group.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-groups',
@@ -15,7 +16,8 @@ export class GroupsPage implements OnInit {
 
   constructor(
     private readonly groupService: GroupService,
-    private readonly dialog: MatDialog
+    private readonly dialog: MatDialog,
+    private readonly router: Router
   ) {
   }
 
@@ -39,5 +41,9 @@ export class GroupsPage implements OnInit {
     this.dialog.open(AddGroupDialogDialog).afterClosed().subscribe(() => {
       this.refreshList();
     });
+  }
+
+  handleGroupDetails(group: ExistingGroup): void {
+    this.router.navigate([`/admin/groups/${group.id}`]);
   }
 }

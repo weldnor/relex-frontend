@@ -89,4 +89,8 @@ export class UserService {
     );
   }
 
+  deleteMember(userId: number, groupId: number): Observable<void> {
+    return this.http
+      .delete<void>(`${environment.api}/groups/${groupId}/users/${userId}`);
+  }
 }

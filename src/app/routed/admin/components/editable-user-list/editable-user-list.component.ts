@@ -3,36 +3,38 @@ import {ExistingUser} from '../../../../features/users/models/existing-user.mode
 import {UserRole} from '../../../../features/users/models/user-role.model';
 
 @Component({
-  selector: 'app-editable-user-list',
-  templateUrl: './editable-user-list.component.html',
-  styleUrls: ['./editable-user-list.component.sass']
+    selector: 'app-editable-user-list',
+    templateUrl: './editable-user-list.component.html',
+    styleUrls: ['./editable-user-list.component.sass']
 })
 export class EditableUserListComponent implements OnInit {
 
-  @Input()
-  users: ExistingUser[];
+    @Input()
+    users: ExistingUser[];
 
-  @Output()
-  userDelete = new EventEmitter<ExistingUser>();
+    @Output()
+    userDelete = new EventEmitter<ExistingUser>();
 
-  @Output()
-  userEdit = new EventEmitter<ExistingUser>();
+    @Output()
+    userInfo = new EventEmitter<ExistingUser>();
 
-  // HACK
-  UserRole = UserRole;
+    // HACK
+    UserRole = UserRole;
 
-  constructor() {
-  }
+    constructor() {
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 
-  // TODO норм название? (хз)
-  handleDeleteUserButtonClick(user: ExistingUser): void {
-    this.userDelete.emit(user);
-  }
+    handleDelete($event, user: ExistingUser): void {
+        // блокируем всплытие https://learn.javascript.ru/event-bubbling
+        $event.stopPropagation();
+        this.userDelete.emit(user);
+    }
 
-  handleEditUserButtonClick(user: ExistingUser): void {
-    this.userEdit.emit(user);
-  }
+
+    handleInfo(user: ExistingUser): void {
+        this.userInfo.emit(user);
+    }
 }
