@@ -26,6 +26,7 @@ import {UserInfoPage} from './pages/user-info/user-info.page';
 import {MatCardModule} from '@angular/material/card';
 import {EditableMemberListComponent} from './components/editable-member-list/editable-member-list.component';
 import {ValidationModule} from '../../features/validators/validation.module';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import {ValidationModule} from '../../features/validators/validation.module';
     MatTableModule,
     MatCardModule,
     ValidationModule,
+    MatSlideToggleModule,
   ]
 })
 export class AdminModule {

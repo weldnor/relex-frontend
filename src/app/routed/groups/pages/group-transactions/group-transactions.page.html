@@ -1,0 +1,11 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <button mat-button (click)="handleAddExpense()">add expense</button>
+    <button mat-button (click)="handleAddIncome()">add income</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<app-transaction-list
+  [transactions]="transactions"
+>
+</app-transaction-list>

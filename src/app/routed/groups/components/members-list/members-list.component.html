@@ -1,0 +1,10 @@
+<mat-list>
+  <ng-container *ngIf="members != undefined">
+
+    <mat-list-item *ngFor="let user of members" class="item" (click)="handleInfo(user)">
+      <div>{{user.username}}</div>
+      <div class="admin-label" *ngIf="user.role === UserRole.ADMIN">admin</div>
+    </mat-list-item>
+
+  </ng-container>
+</mat-list>

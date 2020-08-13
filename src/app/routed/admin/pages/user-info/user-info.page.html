@@ -22,8 +22,8 @@
 
       <!--    FIXME-->
       <section class="checkbox-section">
-        <mat-checkbox ngModel name="isActive" class="is-active-checkbox" [ngModel]="user?.userstatus?.isActive">is Active</mat-checkbox>
-        <mat-checkbox ngModel name="isLocked" class="is-locked-checkbox" [ngModel]="user?.userstatus?.isLocked">is Locked</mat-checkbox>
+        <mat-slide-toggle ngModel name="isActive" class="is-active-checkbox" [ngModel]="user?.userstatus?.isActive">is Active</mat-slide-toggle>
+        <mat-slide-toggle ngModel name="isLocked" class="is-locked-checkbox" [ngModel]="user?.userstatus?.isLocked">is Locked</mat-slide-toggle>
       </section>
 
       <mat-form-field>

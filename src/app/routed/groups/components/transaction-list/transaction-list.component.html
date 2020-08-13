@@ -1,6 +1,6 @@
 <mat-list>
   <ng-container *ngIf="transactions != undefined">
-    <mat-list-item *ngFor="let transaction of transactions" class="item" (click)="handleInfo(transaction)">
+    <mat-list-item *ngFor="let transaction of transactions | reverse" class="item" (click)="handleInfo(transaction)">
       <div>{{transaction.name}}</div>
       <div>{{transaction.amount}}</div>
       <div class="separator"></div>
