@@ -43,11 +43,15 @@ export class GroupService {
       groupId,
       userId
     };
-    return this.http.request('delete', `${environment.api}/groups/deleteMember`, {body: data}) as unknown as Observable<void>;
+    return this.http.request<void>('delete', `${environment.api}/groups/deleteMember`, {body: data});
   }
 
   getUserGroups(userId: number): Observable<ExistingGroup[]> {
     return this.http.get<ExistingGroup[]>(`${environment.api}/groups/userGroups/${userId}`);
+  }
+
+  joinToGroup(joinCode: string): Observable<void> {
+    return this.http.request<void>('post', `${environment.api}/groups/joinToGroup/${joinCode}`);
   }
 
   // TODO

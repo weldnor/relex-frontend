@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>
+  Join to group
+</h1>
+
+<mat-error *ngIf="error">
+  Oops!
+</mat-error>
+
+<mat-dialog-content class="content">
+  <form #form="ngForm" class="form">
+    <mat-form-field>
+      <mat-label>join code</mat-label>
+      <input type="text" ngModel matInput name="code" required/>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button [disabled]="!form.valid" (click)="handleJoinClick(form.value)">
+    Join
+  </button>
+  <button mat-button mat-dialog-close="undefined">
+    Cancel
+  </button>
+</mat-dialog-actions>

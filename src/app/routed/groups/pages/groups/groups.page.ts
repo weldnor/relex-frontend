@@ -5,6 +5,7 @@ import {CurrentUserService} from '../../../../core/auth/current-user.service';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import {AddGroupDialog} from '../../components/add-group/add-group.dialog';
+import {JoinGroupDialog} from '../../components/join-group/join-group.dialog';
 
 @Component({
   templateUrl: './groups.page.html',
@@ -39,9 +40,17 @@ export class GroupsPage implements OnInit {
     });
   }
 
+  handleJoinGroup(): void {
+    this.dialog.open(JoinGroupDialog).afterClosed().subscribe(() => {
+      this.refreshList();
+    });
+  }
+
   private refreshList(): void {
     this.groupService.getUserGroups(this.userId).subscribe(groups => {
       this.groups = groups;
     });
   }
+
+
 }
