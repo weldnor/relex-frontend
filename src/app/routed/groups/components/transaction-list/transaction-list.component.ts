@@ -12,7 +12,7 @@ export class TransactionListComponent implements OnInit {
   transactions: Transaction[];
 
   @Output()
-  transactionInfo: EventEmitter<Transaction>;
+  transactionInfo = new EventEmitter<Transaction>();
 
   constructor() {
   }

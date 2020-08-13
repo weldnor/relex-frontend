@@ -14,4 +14,20 @@ export class TransactionService {
   getAllTransactions(groupId: number): Observable<Transaction[]> {
     return this.http.get<Transaction[]>(`${environment.api}/cashFlow/getCurrentGroupCashFlows/${groupId}`);
   }
+
+  // TODO createdBy: number ?
+  addTransaction(
+    groupId: number,
+    name: string,
+    amount: number,
+    categoryId: number
+  ): Observable<void> {
+    const data = {
+      groupId,
+      name,
+      amount,
+      categoryId
+    };
+    return this.http.post<void>(`${environment.api}/cashFlow`, data);
+  }
 }

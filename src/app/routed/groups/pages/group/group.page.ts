@@ -2,6 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ExistingGroup} from '../../../../features/groups/models/existing-group.model';
 import {GroupService} from '../../../../features/groups/services/groups.service';
+import {Transaction} from '../../../../features/transactions/models/transaction.model';
+import {TransactionService} from '../../../../features/transactions/services/transaction.service';
+import {MatDialog} from '@angular/material/dialog';
+import {AddExpenseDialog} from '../../components/add-expense/add-expense.dialog';
+import {AddIncomeDialog} from '../../components/add-income/add-income.dialog';
 
 @Component({
   templateUrl: './group.page.html',
@@ -10,11 +15,20 @@ import {GroupService} from '../../../../features/groups/services/groups.service'
 export class GroupPage implements OnInit {
 
   group?: ExistingGroup;
-  public results = [{ 'name': 'd', 'value': 100000 },{ 'name': 'e', 'value': 100000 },{ 'name': 'f', 'value': 100000 }, { 'name': 'b', 'value': 100000 }, { 'name': 'c', 'value': 100000 }];
+
+  public results =
+    [{name: 'd', value: 100000}, {name: 'e', value: 100000}, {name: 'f', value: 100000}, {name: 'b', value: 100000}, {
+      name: 'c',
+      value: 100000
+    }];
+
+  transactions?: Transaction[];
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly groupService: GroupService
+    private readonly groupService: GroupService,
+    private readonly transactionService: TransactionService,
+    private readonly dialog: MatDialog,
   ) {
   }
 
@@ -23,56 +37,21 @@ export class GroupPage implements OnInit {
     this.groupService.getGroupById(id).subscribe(group => {
       this.group = group;
     });
+    this.transactionService.getAllTransactions(id).subscribe(
+      transactions => {
+        this.transactions = transactions;
+      });
   }
 
-  title = 'Angular Charts';
+  handleAddExpense(): void {
+    this.dialog.open(AddExpenseDialog, {data: this.group.id}).afterClosed().subscribe(() => {
+      //this.refreshList();
+    });
+  }
 
-  view: any[] = [600, 400];
-
-  // options for the chart
-  showXAxis = true;
-  showYAxis = true;
-  gradient = false;
-  showLegend = true;
-  showXAxisLabel = true;
-  xAxisLabel = 'Country';
-  showYAxisLabel = true;
-  yAxisLabel = 'Sales';
-  timeline = true;
-
-  colorScheme = {
-    domain: ['#9370DB', '#87CEFA', '#FA8072', '#FF7F50', '#90EE90', '#9370DB']
-  };
-
-  //pie
-  showLabels = true;
-
-  // data goes here
-  public single = [
-    {
-      'name': 'China',
-      'value': 2243772
-    },
-    {
-      'name': 'USA',
-      'value': 1126000
-    },
-    {
-      'name': 'Norway',
-      'value': 296215
-    },
-    {
-      'name': 'Japan',
-      'value': 257363
-    },
-    {
-      'name': 'Germany',
-      'value': 196750
-    },
-    {
-      'name': 'France',
-      'value': 204617
-    }
-  ];
-  transactions: any;
+  handleAddIncome() {
+    this.dialog.open(AddIncomeDialog, {data: this.group.id}).afterClosed().subscribe(() => {
+      //this.refreshList();
+    });
+  }
 }

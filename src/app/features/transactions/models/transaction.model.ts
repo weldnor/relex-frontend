@@ -5,5 +5,5 @@ export interface Transaction {
   groupId: number;
   amount: number;
   categoryId: number;
-  createdAt: number;
+  createdAt: string;
 }

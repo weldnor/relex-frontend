@@ -1,0 +1,46 @@
+<h1 mat-dialog-title>
+  Add new Group
+</h1>
+
+<mat-error *ngIf="error">
+  Oops!
+</mat-error>
+
+<mat-dialog-content class="content">
+  <form #form="ngForm" class="form">
+    <mat-form-field appearance="fill">
+      <mat-label>name</mat-label>
+      <input type="text" ngModel matInput name="name" required/>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>amount</mat-label>
+      <input type="number" ngModel matInput name="amount" required/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>category</mat-label>
+      <mat-select ngModel name="categoryId" required>
+        <mat-option value="1">Еда и напитки</mat-option>
+        <mat-option value="2">Покупки</mat-option>
+        <mat-option value="3">Жилье</mat-option>
+        <mat-option value="4">Общ. транспорт</mat-option>
+        <mat-option value="5">Личный траспорт</mat-option>
+        <mat-option value="6">Развлечения</mat-option>
+        <mat-option value="7">Связь и интернет</mat-option>
+        <mat-option value="8">Инвестиции</mat-option>
+        <mat-option value="9">Налоги</mat-option>
+        <mat-option value="10">Штрафы</mat-option>
+        <mat-option value="11">Перевод</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button [disabled]="!form.valid" (click)="handleSaveClick(form.value)">
+    Save
+  </button>
+  <button mat-button mat-dialog-close="undefined">
+    Cancel
+  </button>
+</mat-dialog-actions>
+

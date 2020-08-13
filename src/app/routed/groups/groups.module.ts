@@ -15,10 +15,14 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {FormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {AddIncomeDialog} from './components/add-income/add-income.dialog';
+import {AddExpenseDialog} from './components/add-expense/add-expense.dialog';
+import {MatOptionModule} from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
-  declarations: [GroupsPage, GroupListComponent, GroupPage, TransactionListComponent, AddGroupDialog, JoinGroupDialog],
+  declarations: [GroupsPage, GroupListComponent, GroupPage, TransactionListComponent, AddGroupDialog, JoinGroupDialog, AddIncomeDialog, AddExpenseDialog],
   imports: [
     CommonModule,
     GroupsRoutingModule,
@@ -28,6 +32,8 @@ import {MatInputModule} from '@angular/material/input';
     MatDialogModule,
     FormsModule,
     MatFormFieldModule,
+    MatSelectModule,
+    MatOptionModule,
     MatInputModule,
   ]
 })
