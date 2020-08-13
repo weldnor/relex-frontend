@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {TransactionService} from '../../../../features/transactions/services/transaction.service';
+import {Category} from '../../../../features/transactions/models/category.model';
 
 interface FormValue {
   name: string;
@@ -18,6 +19,9 @@ export class AddExpenseDialog implements OnInit {
 
   error = false;
   private groupId?: number;
+
+  // HACK
+  Category = Category;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) private readonly data,

@@ -19,17 +19,17 @@
     <mat-form-field>
       <mat-label>category</mat-label>
       <mat-select ngModel name="categoryId" required>
-        <mat-option value="1">Еда и напитки</mat-option>
-        <mat-option value="2">Покупки</mat-option>
-        <mat-option value="3">Жилье</mat-option>
-        <mat-option value="4">Общ. транспорт</mat-option>
-        <mat-option value="5">Личный траспорт</mat-option>
-        <mat-option value="6">Развлечения</mat-option>
-        <mat-option value="7">Связь и интернет</mat-option>
-        <mat-option value="8">Инвестиции</mat-option>
-        <mat-option value="9">Налоги</mat-option>
-        <mat-option value="10">Штрафы</mat-option>
-        <mat-option value="11">Перевод</mat-option>
+        <mat-option value="1">{{Category.FOOD_AND_DRINK | category}}</mat-option>
+        <mat-option value="2">{{Category.PURCHASES | category}}</mat-option>
+        <mat-option value="3">{{Category.ACCOMMODATION | category}}</mat-option>
+        <mat-option value="4">{{Category.PUBLIC_TRANSPORT | category}}</mat-option>
+        <mat-option value="5">{{Category.PERSONAL_TRANSPORT | category}}</mat-option>
+        <mat-option value="6">{{Category.ENTERTAINMENT | category}}</mat-option>
+        <mat-option value="7">{{Category.COMMUNICATION_AND_INTERNET | category}}</mat-option>
+        <mat-option value="8">{{Category.INVESTMENTS | category}}</mat-option>
+        <mat-option value="9">{{Category.TAX | category}}</mat-option>
+        <mat-option value="10">{{Category.FINES | category}}</mat-option>
+        <mat-option value="11">{{Category.MONEY_TRANSFER | category}}</mat-option>
       </mat-select>
     </mat-form-field>
   </form>

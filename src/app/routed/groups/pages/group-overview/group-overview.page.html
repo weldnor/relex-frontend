@@ -2,11 +2,12 @@
 <h2>{{group?.groupDescription}}</h2>
 
 <ngx-charts-pie-chart
-  [view]="[400,400]"
   [results]="results"
   [labels]="true"
   [doughnut]="true"
   [legendPosition]="'bottom'"
+  [trimLabels]="false"
+
 >
 </ngx-charts-pie-chart>
 
