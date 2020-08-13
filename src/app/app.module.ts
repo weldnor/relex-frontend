@@ -12,12 +12,6 @@ import {NotFoundPage} from './routed/shared/pages/not-found-page/not-found-.page
 import {HomePage} from './routed/shared/pages/home-page/home.page';
 import {CurrentUserModule} from './features/current-user/current-user.module';
 import {CoreModule} from './core/core.module';
-import {AdminModule} from './routed/admin/admin.module';
-import {MatListModule} from '@angular/material/list';
-import {SharedModule} from './routed/shared/shared.module';
-import {ValidationModule} from './features/validators/validation.module';
-import { GroupsModule } from './routed/groups/groups.module';
-import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -33,14 +27,9 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
     MatToolbarModule,
     HttpClientModule,
     MatButtonModule,
+    MatDialogModule,
     CurrentUserModule,
-    AdminModule,
-    MatListModule,
-    CoreModule,
-    SharedModule,
-    ValidationModule,
-    GroupsModule,
-    NgxChartsModule
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
