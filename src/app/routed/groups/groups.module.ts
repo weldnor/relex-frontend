@@ -24,7 +24,9 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {GroupPage} from './pages/group/group.page';
 import {GroupTransactionsPage} from './pages/group-transactions/group-transactions.page';
 import {PipesModule} from '../../features/pipes/pipes.module';
-import { MembersListComponent } from './components/members-list/members-list.component';
+import {MembersListComponent} from './components/members-list/members-list.component';
+import {MatTableModule} from '@angular/material/table';
+import {TransactionsModule} from '../../features/transactions/transactions.module';
 
 
 @NgModule({
@@ -43,6 +45,8 @@ import { MembersListComponent } from './components/members-list/members-list.com
     MatInputModule,
     MatTabsModule,
     PipesModule,
+    MatTableModule,
+    TransactionsModule
   ]
 })
 export class GroupsModule {

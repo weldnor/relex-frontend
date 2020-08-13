@@ -8,11 +8,14 @@ import {Transaction} from '../../../../features/transactions/models/transaction.
   styleUrls: ['./transaction-list.component.sass']
 })
 export class TransactionListComponent implements OnInit {
+  columns = ['name', 'createdBy', 'categoryId', 'amount', 'createdAt'];
+
   @Input()
   transactions: Transaction[];
 
   @Output()
   transactionInfo = new EventEmitter<Transaction>();
+
 
   constructor() {
   }
@@ -20,7 +23,7 @@ export class TransactionListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  handleInfo(transaction: Transaction) {
-    this.transactionInfo.emit(transaction);
-  }
+  // handleInfo(transaction: Transaction) {
+  //   this.transactionInfo.emit(transaction);
+  // }
 }

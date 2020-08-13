@@ -1,9 +1,51 @@
-<mat-list>
-  <ng-container *ngIf="transactions != undefined">
-    <mat-list-item *ngFor="let transaction of transactions | reverse" class="item" (click)="handleInfo(transaction)">
-      <div>{{transaction.name}}</div>
-      <div>{{transaction.amount}}</div>
-      <div class="separator"></div>
-    </mat-list-item>
+<!--<mat-list>-->
+<!--  <ng-container *ngIf="transactions != undefined">-->
+<!--    <mat-list-item *ngFor="let transaction of transactions | reverse" class="item" (click)="handleInfo(transaction)">-->
+<!--      <div>{{transaction.name}}</div>-->
+<!--      <div>{{transaction.amount}}</div>-->
+<!--      <div class="separator"></div>-->
+<!--    </mat-list-item>-->
+<!--  </ng-container>-->
+<!--</mat-list>-->
+
+<table
+  mat-table
+  [dataSource]="transactions | reverse"
+  class="items-table"
+>
+  <ng-container matColumnDef="name">
+    <th *matHeaderCellDef mat-header-cell>Name</th>
+    <td *matCellDef="let transaction" mat-cell>
+      {{transaction?.name}}
+    </td>
   </ng-container>
-</mat-list>
+
+  <ng-container matColumnDef="amount">
+    <th *matHeaderCellDef mat-header-cell>Amount</th>
+    <td *matCellDef="let transaction" mat-cell>
+      {{transaction?.amount}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="createdBy">
+    <th *matHeaderCellDef mat-header-cell>CreatedBy</th>
+    <td *matCellDef="let transaction" mat-cell>
+      {{transaction?.createdBy}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="categoryId">
+    <th *matHeaderCellDef mat-header-cell>Category</th>
+    <td *matCellDef="let transaction" mat-cell>
+      {{transaction?.categoryId | category}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="createdAt">
+    <th *matHeaderCellDef mat-header-cell>createdAt</th>
+    <td *matCellDef="let transaction" mat-cell>
+      {{transaction?.createdAt | date:'shortDate'}}
+    </td>
+  </ng-container>
+
+  <tr *matHeaderRowDef="columns" mat-header-row></tr>
+  <tr *matRowDef="let row; columns: columns" mat-row></tr>
+</table>

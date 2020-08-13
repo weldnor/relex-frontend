@@ -16,11 +16,7 @@ export class GroupOverviewPage implements OnInit {
 
   group?: ExistingGroup;
 
-  public results =
-    [{name: 'd', value: 100000}, {name: 'e', value: 100000}, {name: 'f', value: 100000}, {name: 'b', value: 100000}, {
-      name: 'c',
-      value: 100000
-    }];
+  public results?: any;
 
   transactions?: Transaction[];
 
@@ -37,10 +33,12 @@ export class GroupOverviewPage implements OnInit {
     this.groupService.getGroupById(id).subscribe(group => {
       this.group = group;
     });
-    this.transactionService.getAllTransactions(id).subscribe(
-      transactions => {
-        this.transactions = transactions;
-      });
+    this.transactionService.getAllTransactions(id).subscribe(transactions => {
+      this.transactions = transactions;
+    });
+    this.transactionService.getExpenseStatistic(id).subscribe(value => {
+      this.results = value;
+    });
   }
 
   handleAddExpense(): void {

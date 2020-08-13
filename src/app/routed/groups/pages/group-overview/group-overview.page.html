@@ -1,8 +1,5 @@
-<div>{{group?.id}}</div>
-<div>{{group?.groupDescription}}</div>
-<div>{{group?.groupName}}</div>
-<div>{{group?.joinCode}}</div>
-<div>{{group?.balance}}</div>
+<h1>{{group?.groupName}}</h1>
+<h2>{{group?.groupDescription}}</h2>
 
 <ngx-charts-pie-chart
   [view]="[400,400]"
@@ -12,6 +9,8 @@
   [legendPosition]="'bottom'"
 >
 </ngx-charts-pie-chart>
+
+<h3>Balance: {{group?.balance}}</h3>
 
 <app-transaction-list
   [transactions]="transactions"
