@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {TransactionsList} from '../../models/transaction-list';
-import {ListModel} from '../../../../features/api/models/containers.model';
 
 
 @Component({
-  templateUrl: './transaction-list.page.html',
-  styleUrls: ['./transaction-list.page.sass']
+  templateUrl: './transaction-list.component.html',
+  styleUrls: ['./transaction-list.component.sass']
 })
-export class TransactionListPage implements OnInit {
-  items: TransactionsList[];
+export class TransactionListComponent implements OnInit {
+  items: Tran[];
 
   constructor(private readonly http: HttpClient) { }
 
