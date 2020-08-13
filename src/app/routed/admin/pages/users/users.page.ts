@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ExistingUser} from '../../../../features/users/models/existing-user.model';
 import {UserService} from '../../../../features/users/services/users.service';
-import {AddUserDialogDialog} from '../../components/add-user-dialog/add-user-dialog.dialog';
+import {AddUserDialog} from '../../components/add-user-dialog/add-user.dialog';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 
@@ -41,7 +41,7 @@ export class UsersPage implements OnInit {
   }
 
   handleUserCreate(): void {
-    this.dialog.open(AddUserDialogDialog).afterClosed().subscribe(() => {
+    this.dialog.open(AddUserDialog).afterClosed().subscribe(() => {
       this.refreshList();
     });
   }

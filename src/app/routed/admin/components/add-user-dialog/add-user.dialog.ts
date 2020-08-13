@@ -15,16 +15,16 @@ interface FormValue {
 
 
 @Component({
-  templateUrl: './add-user-dialog.dialog.html',
-  styleUrls: ['./add-user-dialog.dialog.sass']
+  templateUrl: './add-user.dialog.html',
+  styleUrls: ['./add-user.dialog.sass']
 })
-export class AddUserDialogDialog implements OnInit {
+export class AddUserDialog implements OnInit {
   error = false;
 
 
   constructor(
     @Inject(MAT_DIALOG_DATA) private readonly data,
-    private readonly dialogRef: MatDialogRef<AddUserDialogDialog, undefined>,
+    private readonly dialogRef: MatDialogRef<AddUserDialog, undefined>,
     private readonly userService: UserService
   ) {
   }

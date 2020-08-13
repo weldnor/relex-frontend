@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {GroupService} from '../../../../features/groups/services/groups.service';
-import {AddGroupDialogDialog} from '../../components/add-group-dialog/add-group-dialog.dialog';
+import {AddGroupDialog} from '../../components/add-group-dialog/add-group.dialog';
 import {ExistingGroup} from '../../../../features/groups/models/existing-group.model';
 import {Router} from '@angular/router';
 
@@ -38,7 +38,7 @@ export class GroupsPage implements OnInit {
   }
 
   handleGroupCreate(): void {
-    this.dialog.open(AddGroupDialogDialog).afterClosed().subscribe(() => {
+    this.dialog.open(AddGroupDialog).afterClosed().subscribe(() => {
       this.refreshList();
     });
   }

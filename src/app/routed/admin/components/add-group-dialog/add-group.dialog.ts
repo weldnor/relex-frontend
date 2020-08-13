@@ -10,17 +10,17 @@ interface FormValue {
 
 
 @Component({
-  templateUrl: './add-group-dialog.dialog.html',
-  styleUrls: ['./add-group-dialog.dialog.sass']
+  templateUrl: './add-group.dialog.html',
+  styleUrls: ['./add-group.dialog.sass']
 })
-export class AddGroupDialogDialog implements OnInit {
+export class AddGroupDialog implements OnInit {
 
   error = false;
 
 
   constructor(
     @Inject(MAT_DIALOG_DATA) private readonly data,
-    private readonly dialogRef: MatDialogRef<AddGroupDialogDialog, undefined>,
+    private readonly dialogRef: MatDialogRef<AddGroupDialog, undefined>,
     private readonly groupService: GroupService
   ) {
   }
