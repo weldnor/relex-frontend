@@ -9,15 +9,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SignUpPage} from './pages/sign-up/sign-up.page';
-import {DisplayErrorPipe} from './errors/display-error.pipe';
-import {ErrorsToArrayPipe} from './errors/errors-to-array.pipe';
+import {ValidationModule} from '../../features/validators/validation.module';
 
 @NgModule({
   declarations: [
     LoginPage,
     SignUpPage,
-    DisplayErrorPipe,
-    ErrorsToArrayPipe,
   ],
   imports: [
     CommonModule,
@@ -27,7 +24,8 @@ import {ErrorsToArrayPipe} from './errors/errors-to-array.pipe';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ValidationModule
   ]
 })
 export class AuthModule {

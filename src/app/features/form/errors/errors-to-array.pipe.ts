@@ -5,12 +5,12 @@ import { ValidationErrors } from '@angular/forms';
   name: 'errorsToArray'
 })
 export class ErrorsToArrayPipe implements PipeTransform {
-  transform(
-    value: ValidationErrors | undefined
-  ): string[] | undefined {
+
+  transform(value: ValidationErrors | undefined): string[] | undefined {
     if (value == undefined) {
       return undefined;
     }
     return Object.keys(value);
   }
+
 }

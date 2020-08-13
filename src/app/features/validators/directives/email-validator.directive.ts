@@ -4,7 +4,6 @@ import {
   NG_VALIDATORS,
   ValidationErrors,
   ValidatorFn,
-  Validators,
 } from '@angular/forms';
 
 export const emailRegExp: ValidatorFn = (control) => {

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileInfoPage } from './pages/profile-info/profile-info.page';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -10,10 +9,12 @@ import {AuthModule} from '../auth/auth.module';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-
+import {ValidationModule} from '../../features/validators/validation.module';
 
 @NgModule({
-  declarations: [ProfileInfoPage],
+  declarations: [
+    ProfileInfoPage,
+  ],
   imports: [
     CommonModule,
     ProfileRoutingModule,
@@ -23,7 +24,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     AuthModule,
     MatButtonModule,
     MatInputModule,
-    MatCheckboxModule
-  ]
+    MatCheckboxModule,
+    ValidationModule
+  ],
+
 })
 export class ProfileModule { }
