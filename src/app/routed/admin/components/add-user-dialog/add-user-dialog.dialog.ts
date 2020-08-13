@@ -21,7 +21,6 @@ interface FormValue {
 export class AddUserDialogDialog implements OnInit {
   error = false;
 
-
   constructor(
     @Inject(MAT_DIALOG_DATA) private readonly data,
     private readonly dialogRef: MatDialogRef<AddUserDialogDialog, undefined>,

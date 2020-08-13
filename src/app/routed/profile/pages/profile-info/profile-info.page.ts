@@ -77,4 +77,12 @@ export class ProfileInfoPage implements OnInit {
         }
       );
   }
+
+  handleUserDelete(): void {
+    this.userService.deleteUserById(this.user.id).subscribe(() => {
+      console.log('User has been deleted');
+    }, error => {
+      console.log('Error:', error);
+    });
+  }
 }
