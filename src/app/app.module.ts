@@ -17,6 +17,7 @@ import {MatListModule} from '@angular/material/list';
 import {SharedModule} from './routed/shared/shared.module';
 import {ValidationModule} from './features/validators/validation.module';
 import { GroupsModule } from './routed/groups/groups.module';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { GroupsModule } from './routed/groups/groups.module';
     CoreModule,
     SharedModule,
     ValidationModule,
-    GroupsModule
+    GroupsModule,
+    NgxChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

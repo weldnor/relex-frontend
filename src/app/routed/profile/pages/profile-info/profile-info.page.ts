@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { CurrentUserService } from '../../../../core/auth/current-user.service';
 import { ExistingUser } from '../../../../features/users/models/existing-user.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { nameRegExp } from '../../../auth/validators/name-validator.directive';
-import { phoneRegExp } from '../../../auth/validators/phone-validator.directive';
-import { emailRegExp } from '../../../auth/validators/email-validator.directive';
 import { UserRole } from '../../../../features/users/models/user-role.model';
 import { UserService } from '../../../../features/users/services/users.service';
-import { PersonalInfo } from '../../../../features/users/models/personal-info.model';
+import {nameRegExp} from '../../../../features/validators/directives/name-validator.directive';
+import {phoneRegExp} from '../../../../features/validators/directives/phone-validator.directive';
+import {emailRegExp} from '../../../../features/validators/directives/email-validator.directive';
 
 interface FormValue {
   password: string;

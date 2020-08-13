@@ -3,3 +3,12 @@
 <div>{{group?.groupName}}</div>
 <div>{{group?.joinCode}}</div>
 <div>{{group?.balance}}</div>
+
+<ngx-charts-pie-chart
+  [view]="[400,400]"
+  [results]="results"
+  [labels]="true"
+  [doughnut]="true"
+  [legendPosition]="'bottom'"
+>
+</ngx-charts-pie-chart>
