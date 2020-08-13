@@ -1,17 +1,17 @@
 import {HttpClient} from '@angular/common/http';
-import {ExistingGroup} from '../../groups/models/existing-group.model';
 import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
+import {Transaction} from '../models/transaction.model';
 import {environment} from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TransactionsService {
+export class TransactionService {
   constructor(private readonly http: HttpClient) {
   }
 
-  getAllGroups(): Observable<ExistingGroup[]> {
-    return this.http.get<ExistingGroup[]>(`${environment.api}/groups/`);
+  getAllTransactions(groupId: number): Observable<Transaction[]> {
+    return this.http.get<Transaction[]>(`${environment.api}/cashFlow/getCurrentGroupCashFlows/${groupId}`);
   }
 }

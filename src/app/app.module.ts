@@ -12,6 +12,7 @@ import {NotFoundPage} from './routed/shared/pages/not-found-page/not-found-.page
 import {HomePage} from './routed/shared/pages/home-page/home.page';
 import {CurrentUserModule} from './features/current-user/current-user.module';
 import {CoreModule} from './core/core.module';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [

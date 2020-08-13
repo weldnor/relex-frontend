@@ -74,4 +74,5 @@ export class GroupPage implements OnInit {
       'value': 204617
     }
   ];
+  transactions: any;
 }
