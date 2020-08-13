@@ -8,14 +8,17 @@ import {MatListModule} from '@angular/material/list';
 import {GroupPage} from './pages/group/group.page';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {TransactionListComponent} from './components/transaction-list/transaction-list.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { AddGroupDialog } from './components/add-group/add-group.dialog';
 
 
 @NgModule({
-  declarations: [GroupsPage, GroupListComponent, GroupPage, TransactionListComponent],
+  declarations: [GroupsPage, GroupListComponent, GroupPage, TransactionListComponent, AddGroupDialog],
   imports: [
     CommonModule,
     GroupsRoutingModule,
     MatListModule,
+    MatToolbarModule,
     NgxChartsModule,
   ]
 })
