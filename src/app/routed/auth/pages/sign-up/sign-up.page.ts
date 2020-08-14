@@ -67,11 +67,7 @@ export class SignUpPage implements OnInit {
             this.dialog.closeAll();
           }
         });
-      setTimeout(this.handleRedirect, 3000);
+      // setTimeout(this.handleRedirect, 3000);
     });
-  }
-
-  handleRedirect(): void {
-    this.router.navigate(['/auth/login']);
   }
 }

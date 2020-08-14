@@ -7,11 +7,10 @@ import { UserService } from '../../../../features/users/services/users.service';
 import {nameRegExp} from '../../../../features/validators/directives/name-validator.directive';
 import {phoneRegExp} from '../../../../features/validators/directives/phone-validator.directive';
 import {emailRegExp} from '../../../../features/validators/directives/email-validator.directive';
+import {Router} from '@angular/router';
 
 interface FormValue {
   password: string;
-  role: UserRole;
-  isActive: boolean;
   firstName: string;
   lastName: string;
   phone: string;
@@ -57,7 +56,6 @@ export class ProfileInfoPage implements OnInit {
   }
 
   handleFormSubmit(value: FormValue): void {
-    console.log(value);
     this.userService
       .editUserAsUser(
         this.user.id,
@@ -84,5 +82,10 @@ export class ProfileInfoPage implements OnInit {
     }, error => {
       console.log('Error:', error);
     });
+    this.currentUserService.logout().subscribe(
+      () => {
+      },
+      (error) => console.error(error)
+    );
   }
 }

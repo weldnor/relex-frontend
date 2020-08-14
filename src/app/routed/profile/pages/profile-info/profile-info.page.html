@@ -1,7 +1,6 @@
 <form
   [formGroup]="form"
   class="regCard"
-  (ngSubmit)="handleFormSubmit(form.value)"
 >
   <mat-card>
     <mat-card-title class="loginLabel">Hello, {{user.username}} !</mat-card-title>
@@ -86,7 +85,8 @@
         class="delete-button"
         mat-flat-button
         color="warn"
-        (submit)="handleUserDelete()"
+        (click)="handleUserDelete()"
+        routerLink="/"
       >
         Delete Profile
       </button>
@@ -94,6 +94,7 @@
         mat-flat-button
         color="primary"
         [disabled]="!form.valid"
+        (click) = "handleFormSubmit(form.value)"
       >
         Save
       </button>
