@@ -1,33 +1,32 @@
 import {Directive, forwardRef} from '@angular/core';
 import {AbstractControl, NG_VALIDATORS, ValidationErrors, ValidatorFn} from '@angular/forms';
 
-export const nameRegExp: ValidatorFn = (control) => {
-  if (/^.{5,50}$/.test(control.value)) {
+export const passwordRegExp: ValidatorFn = (control) => {
+  if (/^.{8,50}$/.test(control.value)) {
     // tslint:disable-next-line:no-null-keyword
     return null;
   }
   return {
-    nameRegExp: true,
+    phoneRegExp: true,
   };
 };
 
 @Directive({
-  selector: '[appNameValidator]',
+  selector: '[appPasswordValidator]',
   providers: [
     {
       provide: NG_VALIDATORS,
-      useExisting: forwardRef(
-        () => NameValidatorDirective
-      ),
-      multi: true
-    }
-  ]
+      useExisting: forwardRef(() => PasswordValidatorDirective),
+      multi: true,
+    },
+  ],
 })
-export class NameValidatorDirective {
+export class PasswordValidatorDirective {
 
-  constructor() { }
+  constructor() {
+  }
 
   validate(control: AbstractControl): ValidationErrors | null {
-    return nameRegExp(control);
+    return passwordRegExp(control);
   }
 }

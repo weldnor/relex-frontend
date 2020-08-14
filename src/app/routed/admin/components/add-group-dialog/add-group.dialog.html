@@ -5,18 +5,18 @@
 
 
 <mat-dialog-content class="content">
-  <form #form="ngForm" class="form">
+  <form [formGroup]="form" class="form">
     <mat-form-field>
       <mat-label>admin id</mat-label>
-      <input type="number" ngModel matInput name="groupAdminId" required/>
+      <input type="number" ngModel matInput formControlName="groupAdminId"/>
     </mat-form-field>
     <mat-form-field>
       <mat-label>name</mat-label>
-      <input type="text" ngModel matInput name="groupName" required/>
+      <input type="text" ngModel matInput formControlName="groupName"/>
     </mat-form-field>
     <mat-form-field>
       <mat-label>description</mat-label>
-      <input type="text" ngModel matInput name="groupDescription" required/>
+      <input type="text" ngModel matInput formControlName="groupDescription"/>
     </mat-form-field>
   </form>
 </mat-dialog-content>

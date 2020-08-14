@@ -86,7 +86,7 @@ export class CurrentUserService {
       username,
       password,
       personalInfo,
-      role,
+      role
     };
     return this.http
       .post<void>(`${environment.api}/public/reg`, data)

@@ -8,19 +8,19 @@
 
 
 <mat-dialog-content class="content">
-  <form #form="ngForm" class="form">
+  <form [formGroup]="form" class="form">
     <mat-form-field>
       <mat-label>Username</mat-label>
-      <input type="text" ngModel matInput name="username" required/>
+      <input type="text" ngModel matInput formControlName="username"/>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Password</mat-label>
-      <input type="text" ngModel matInput name="password" required/>
+      <input type="text" ngModel matInput formControlName="password"/>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Role</mat-label>
-      <mat-select ngModel name="role" required>
+      <mat-select ngModel formControlName="role">
         <mat-option value="USER">User</mat-option>
         <mat-option value="ADMIN">Admin</mat-option>
       </mat-select>
@@ -28,19 +28,19 @@
 
     <mat-form-field>
       <mat-label>Firstname</mat-label>
-      <input type="text" ngModel matInput name="firstName" required/>
+      <input type="text" ngModel matInput formControlName="firstName"/>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Lastname</mat-label>
-      <input type="text" ngModel matInput name="lastName" required/>
+      <input type="text" matInput formControlName="lastName"/>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Email</mat-label>
-      <input type="text" ngModel matInput name="email" required/>
+      <input type="text" ngModel matInput formControlName="email"/>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Phone</mat-label>
-      <input type="text" ngModel matInput name="phone" required/>
+      <input type="text" ngModel matInput formControlName="phone"/>
     </mat-form-field>
   </form>
 </mat-dialog-content>

@@ -13,7 +13,7 @@ import {CommonModule} from '@angular/common';
 import {EditableGroupListComponent} from './components/editable-group-list/editable-group-list.component';
 import {AddUserDialog} from './components/add-user-dialog/add-user.dialog';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -61,6 +61,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatCardModule,
     ValidationModule,
     MatSlideToggleModule,
+    ReactiveFormsModule,
   ]
 })
 export class AdminModule {

@@ -5,12 +5,10 @@
 
   <mat-card-content>
 
-
     <mat-error *ngIf="error">
       Oops! Something is wrong
     </mat-error>
-
-
+    <h4>User id: {{user?.id}}</h4>
     <form #form="ngForm" class="form">
       <mat-form-field appearance="fill">
         <mat-label>Role</mat-label>
@@ -22,8 +20,12 @@
 
       <!--    FIXME-->
       <section class="checkbox-section">
-        <mat-slide-toggle ngModel name="isActive" class="is-active-checkbox" [ngModel]="user?.userstatus?.isActive">is Active</mat-slide-toggle>
-        <mat-slide-toggle ngModel name="isLocked" class="is-locked-checkbox" [ngModel]="user?.userstatus?.isLocked">is Locked</mat-slide-toggle>
+        <mat-slide-toggle ngModel name="isActive" class="is-active-checkbox" [ngModel]="user?.userstatus?.isActive"
+                          [checked]="user?.userstatus?.isActive">is Active
+        </mat-slide-toggle>
+        <mat-slide-toggle ngModel name="isLocked" class="is-locked-checkbox" [ngModel]="user?.userstatus?.isLocked"
+                          [checked]="user?.userstatus?.isLocked">is Locked
+        </mat-slide-toggle>
       </section>
 
       <mat-form-field>

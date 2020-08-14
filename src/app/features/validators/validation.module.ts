@@ -5,6 +5,7 @@ import {NameValidatorDirective} from './directives/name-validator.directive';
 import {PhoneValidatorDirective} from './directives/phone-validator.directive';
 import {DisplayErrorPipe} from '../form/errors/display-error.pipe';
 import {ErrorsToArrayPipe} from '../form/errors/errors-to-array.pipe';
+import {PasswordValidatorDirective} from './directives/password-validator.directive';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import {ErrorsToArrayPipe} from '../form/errors/errors-to-array.pipe';
     ErrorsToArrayPipe,
     EmailValidatorDirective,
     NameValidatorDirective,
-    PhoneValidatorDirective
+    PhoneValidatorDirective,
+    PasswordValidatorDirective
   ],
   imports: [
     CommonModule
@@ -23,7 +25,8 @@ import {ErrorsToArrayPipe} from '../form/errors/errors-to-array.pipe';
     ErrorsToArrayPipe,
     EmailValidatorDirective,
     NameValidatorDirective,
-    PhoneValidatorDirective
+    PhoneValidatorDirective,
+    PasswordValidatorDirective
   ]
 })
 export class ValidationModule {

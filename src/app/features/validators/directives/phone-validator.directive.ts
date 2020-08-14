@@ -1,5 +1,5 @@
-import { Directive } from '@angular/core';
-import {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
+import {Directive, forwardRef} from '@angular/core';
+import {AbstractControl, NG_VALIDATORS, ValidationErrors, ValidatorFn} from '@angular/forms';
 
 export const phoneRegExp: ValidatorFn = (control) => {
   if (/\d{5,15}/.test(control.value)) {
@@ -12,7 +12,14 @@ export const phoneRegExp: ValidatorFn = (control) => {
 };
 
 @Directive({
-  selector: '[appPhoneValidator]'
+  selector: '[appPhoneValidator]',
+  providers: [
+    {
+      provide: NG_VALIDATORS,
+      useExisting: forwardRef(() => PhoneValidatorDirective),
+      multi: true,
+    },
+  ],
 })
 export class PhoneValidatorDirective {
 

@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CurrentUserService } from '../../../../core/auth/current-user.service';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-import {emailRegExp} from '../../../../features/validators/directives/email-validator.directive';
-import {phoneRegExp} from '../../../../features/validators/directives/phone-validator.directive';
-import {nameRegExp} from '../../../../features/validators/directives/name-validator.directive';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { emailRegExp } from '../../../../features/validators/directives/email-validator.directive';
+import { phoneRegExp } from '../../../../features/validators/directives/phone-validator.directive';
+import { nameRegExp } from '../../../../features/validators/directives/name-validator.directive';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { InfoDialogComponent } from '../../components/info-dialog/info-dialog.component';
 
 interface SignUpFormData {
   username: string;
@@ -28,7 +27,9 @@ export class SignUpPage implements OnInit {
 
   constructor(
     private readonly currentUserService: CurrentUserService,
-    private readonly fb: FormBuilder
+    private readonly fb: FormBuilder,
+    private readonly router: Router,
+    private readonly dialog: MatDialog
   ) {
     this.form = this.initForm();
   }
@@ -49,23 +50,24 @@ export class SignUpPage implements OnInit {
   handleFormSubmit(value: SignUpFormData): void {
     console.log(value);
     this.error = false;
-    this.currentUserService
-      .createUser(
-        value.username,
-        value.password,
-        value.firstName,
-        value.lastName,
-        value.phone,
-        value.email
-      )
-      .subscribe(
-        () => {
-          this.currentUserService.login(value.username, value.password);
-        },
-        (error) => {
-          console.error('Error', error);
-          this.error = true;
-        }
-      );
+    this.currentUserService.createUser(
+      value.username,
+      value.password,
+      value.firstName,
+      value.lastName,
+      value.phone,
+      value.email
+    ).subscribe(() =>
+    {
+      this.dialog
+        .open<InfoDialogComponent, boolean | undefined>(InfoDialogComponent)
+        .afterClosed()
+        .subscribe((res) => {
+          if (res === true) {
+            this.dialog.closeAll();
+          }
+        });
+      // setTimeout(this.handleRedirect, 3000);
+    });
   }
 }

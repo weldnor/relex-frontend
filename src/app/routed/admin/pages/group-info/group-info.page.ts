@@ -38,7 +38,7 @@ export class GroupInfoPage implements OnInit {
   }
 
   handleSave(data: UpdateGroupFormData): void {
-    // TODO
+
   }
 
   handleMemberDelete(member: ExistingUser): void {
@@ -49,10 +49,6 @@ export class GroupInfoPage implements OnInit {
 
   handleMemberInfo(member: ExistingUser): void {
     this.router.navigate([`/admin/users/${member.id}`]);
-  }
-
-  handleMemberEdit($event: ExistingUser): void {
-    // TODO
   }
 
   handleGoBack(): void {
